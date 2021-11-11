@@ -3,7 +3,7 @@ package backend.objects;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
+import java.util.Collection;
 import javax.jdo.annotations.*;
 
 @PersistenceCapable
