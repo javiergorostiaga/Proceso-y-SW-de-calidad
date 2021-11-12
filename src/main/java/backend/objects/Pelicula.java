@@ -5,11 +5,13 @@ import lombok.Getter;
 import lombok.Setter;
 import org.datanucleus.*;
 import java.util.Collection;
+
 import javax.jdo.annotations.*;
 
 @PersistenceCapable
 @AllArgsConstructor
 public class Pelicula
+
 {
     @PrimaryKey
     @Getter @Setter private int id;

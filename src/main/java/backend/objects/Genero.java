@@ -11,7 +11,9 @@ import javax.jdo.annotations.*;
 public class Genero
 {
     @PrimaryKey
-    @Getter @Setter private int id;
+    @Getter
+    @Setter
+    private int id;
     @Getter @Setter private String nombre;
 
     @Persistent(table="GENEROS_PELICULAS")

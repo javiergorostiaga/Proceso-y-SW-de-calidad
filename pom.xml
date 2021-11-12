@@ -8,8 +8,8 @@
     <artifactId>Proceso-y-SW-de-calidad</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>GitHub Exporter</name>
-    <url>https://github.com/unaiarambarri/GitHub-Exporter</url>
+    <name>Proceso-y-SW-de-calidad</name>
+    <url>https://github.com/javiergorostiaga/Proceso-y-SW-de-calidad</url>
 
     <properties>
         <config.files.dir>resources/</config.files.dir>
