@@ -21,7 +21,9 @@ public class AppService {
         try
         {
             dao=new DAO();
-            respuesta = gateway.exportPeliculas(""); //rellenar URL
+            respuesta = gateway.exportPeliculas("http://www.omdbapi.com/?s=batman&apikey=3ae17be9");
+            // vamos a empezar solo viendo si funciona con una pelicula
+            // luego metemos muchas con un loop desde fichero
             dao.insertPeliculas(respuesta);
         } catch (Exception e){
 
@@ -29,6 +31,7 @@ public class AppService {
         return true; //si los datos son exportados devuelve true
     }
 
+    /*
     public boolean exportGeneros() throws Exception {
         try
         {
@@ -40,4 +43,6 @@ public class AppService {
         }
         return true; //si los datos son exportados devuelve true
     }
+    */
+
 }

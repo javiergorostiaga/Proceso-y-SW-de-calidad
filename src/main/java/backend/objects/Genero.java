@@ -3,7 +3,7 @@ package backend.objects;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
+import java.util.Collection;
 import javax.jdo.annotations.*;
 
 @PersistenceCapable
@@ -11,9 +11,7 @@ import javax.jdo.annotations.*;
 public class Genero
 {
     @PrimaryKey
-    @Getter
-    @Setter
-    private int id;
+    @Getter @Setter private int id;
     @Getter @Setter private String nombre;
 
     @Persistent(table="GENEROS_PELICULAS")
