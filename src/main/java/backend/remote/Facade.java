@@ -27,6 +27,7 @@ public class Facade extends UnicastRemoteObject implements IFacade {
         System.out.println("* Received exportData() call from Client");
         if (app_service.exportPeliculas()) //luego meteremos and si hay que hacer mas exports
         {
+
             return true;
         }
         else

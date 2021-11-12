@@ -3,7 +3,14 @@ package backend.dao;
 import backend.objects.Genero;
 import backend.objects.Pelicula;
 
+
+import org.json.simple.JSONObject;
+
+import javax.jdo.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 
 public class DAO implements IDao{
