@@ -22,7 +22,7 @@ public class AppService  {
         {
             //dao=new DAO();
 
-            respuesta = gateway.exportPeliculas("https://www.omdbapi.com/?s=batman&apikey=3ae17be9");
+            respuesta = gateway.exportPeliculaGenerico("batman"); //aqui nombres de peliculas
 
             // vamos a empezar solo viendo si funciona con una pelicula
             // luego metemos muchas con un loop desde fichero

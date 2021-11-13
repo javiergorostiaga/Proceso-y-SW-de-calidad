@@ -36,7 +36,7 @@ public class Gateway implements IGateway {
         webTarget = client.target(url);
     }
 
-    public ArrayList<HashMap<String, Object>> makeGetRequest() throws Exception
+    public String makeGetRequest() throws Exception
     {
 
         WebTarget getRequestController = this.webTarget.path("");
@@ -46,40 +46,11 @@ public class Gateway implements IGateway {
         System.out.println(response);
         if (response.getStatus() == Status.OK.getStatusCode())
         {
-
-            ArrayList<HashMap<String, Object>> datos = new ArrayList<>();
-            JSONObject obj = response.readEntity(JSONObject.class);
+            //ArrayList<HashMap<String, Object>> datos = new ArrayList<>(); // ya no se usa
+            JSONObject obj = response.readEntity(JSONObject.class); //devuelve objeto json, el anyo pasado nos devolvia array json
             String stringobj = obj.toString(); //convertimos el JSONOBject a String
-
-            String[] separado = stringobj.split("imdbID");
-            for(int i=0;i<separado.length;i++) {
-                separado[i] = separado[i].substring(3);
-            }
-            //aqui tenemos todos los strings empezando por el id
-
-            for(int i=0;i<separado.length;i++) {
-                String[] obtId = separado[i].split("\"");
-                separado[i] = obtId[0];
-                System.out.println(separado[i]+"\n");
-            }
-            //aqui ya hemos podido separar todos los ids.
-            //a estas alturas del codigo String[] separado
-            // tiene todos los ids de la peticion que se haya hecho
-
-            //con esto, habria que hacer otra peticion y pasar el id como parametro en el enlace
-
-            /*
-            for(int i=0;i<obj.size();i++) {
-
-                System.out.println(obj.get(i));
-
-                datos.add((HashMap<String, Object>) obj.get(i)); //hay que mirar como recogemos esto
-            //nos devuelve un arraylist(cantidad de peliculas) de hashmap
-            }
-
-             */
-            return datos;
-
+            System.out.println("STRINGOBJ"+stringobj);
+            return stringobj; // esto habra que cambiar
         }
         else
         {
@@ -87,22 +58,63 @@ public class Gateway implements IGateway {
         }
     }
 
-    @Override
-    public ArrayList<HashMap<String, Object>> exportPeliculas(String url) throws Exception {
-        this.url=url;
+    public String obtenerimdbID(String stringobj) //esto quizas no iria en esta clase
+    {
+        String[] separado = stringobj.split("imdbID"); // solo queremos el id en la primera consulta
 
-        accessPoint();
-
-        return makeGetRequest();
+        for(int i=0;i<separado.length;i++) {
+            //System.out.println("Separado (" +i +"): "+ separado[i]+"\n\n\n");
+            System.out.println("Separado (" +i +") Substring: "+ separado[i].substring(3)+"\n\n\n");
+            separado[i] = separado[i].substring(3);
+        }
+        //aqui tenemos todos los strings empezando por el id
+        for(int i=0;i<separado.length;i++) {
+            String[] obtId = separado[i].split("\"");
+            separado[i] = obtId[0];
+            //System.out.println(separado[i]+"\n");
+        }
+        System.out.println("Separado (0)" + separado[1]);
+        return separado[1];// el 0 no contiene el id todavia al ser la primera division por imdbid
     }
 
-    //export generos necesitara primero del imdbid
-    /*
+    public String obtenerDatosPelicula(String stringobj) //esto quizas no iria en esta clase
+    {
+        //AQUI SE TRATARAN LOS DATOS QUE VIENEN DE LA SEGUNDA CONSULTA
+        System.out.println(stringobj);
+        return "";
+    }
+
     @Override
-    public ArrayList<HashMap<String, Object>> exportGeneros(String url) throws Exception {
+    public ArrayList<HashMap<String, Object>> exportPeliculaGenerico(String pelicula) throws Exception {
+        String url="https://www.omdbapi.com/?s="+pelicula+"&apikey=3ae17be9";
         this.url=url;
         accessPoint();
-        return makeGetRequest();
+        String imdbID="";
+        imdbID=obtenerimdbID(makeGetRequest());
+        System.out.println("imdbID-------)"+imdbID);
+
+        try
+        {
+            exportPeliculaEspecifico(imdbID); //solo cogemos una pelicula de todas las peliculas del mismo nombre
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error al obtener información específica de película" +imdbID);
+        }
+
+        return null;
     }
-*/
+
+    @Override
+    public ArrayList<HashMap<String, Object>> exportPeliculaEspecifico(String imdbID) throws Exception {
+        String url="https://www.omdbapi.com/?i="+imdbID+"&apikey=3ae17be9";
+        this.url=url;
+        accessPoint();
+        String respuesta ="";
+        respuesta=makeGetRequest();
+        //aqui se trata la segunda respuesta
+        return null;
+    }
+
+
 }
