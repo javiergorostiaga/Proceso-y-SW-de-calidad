@@ -1,0 +1,16 @@
+backend\gateway\IGateway.class
+backend\objects\Genero.class
+backend\objects\Pelicula.class
+common\properties\PropertyManager.class
+backend\objects\Usuario.class
+common\remote\IFacade.class
+backend\gateway\Gateway.class
+common\properties\AppPropertyManager.class
+frontend\swing\Principal.class
+frontend\controller\Controller.class
+backend\app_service\AppService.class
+backend\dao\DAO.class
+backend\remote\Facade.class
+backend\dao\IDao.class
+frontend\remote\RMIServiceLocator.class
+backend\fichero\LeerFichero.class

@@ -17,6 +17,8 @@ import com.fasterxml.jackson.databind.JsonSerializable;
 import org.json.simple.JSONArray;
 import org.json.*;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class Gateway implements IGateway {
 
@@ -46,18 +48,38 @@ public class Gateway implements IGateway {
         {
 
             ArrayList<HashMap<String, Object>> datos = new ArrayList<>();
-            //System.out.println(response.readEntity(JSONObject.class));
-            JSONObject jsonArray = response.readEntity(JSONObject.class);
-            System.out.println("aqui");
+            JSONObject obj = response.readEntity(JSONObject.class);
+            String stringobj = obj.toString(); //convertimos el JSONOBject a String
 
-            for(int i=0;i<jsonArray.size();i++) {
+            String[] separado = stringobj.split("imdbID");
+            for(int i=0;i<separado.length;i++) {
+                separado[i] = separado[i].substring(3);
+            }
+            //aqui tenemos todos los strings empezando por el id
 
-                System.out.println(jsonArray.get(i));
+            for(int i=0;i<separado.length;i++) {
+                String[] obtId = separado[i].split("\"");
+                separado[i] = obtId[0];
+                System.out.println(separado[i]+"\n");
+            }
+            //aqui ya hemos podido separar todos los ids.
+            //a estas alturas del codigo String[] separado
+            // tiene todos los ids de la peticion que se haya hecho
 
-                datos.add((HashMap<String, Object>) jsonArray.get(i)); //hay que mirar como recogemos esto
+            //con esto, habria que hacer otra peticion y pasar el id como parametro en el enlace
+
+            /*
+            for(int i=0;i<obj.size();i++) {
+
+                System.out.println(obj.get(i));
+
+                datos.add((HashMap<String, Object>) obj.get(i)); //hay que mirar como recogemos esto
             //nos devuelve un arraylist(cantidad de peliculas) de hashmap
             }
+
+             */
             return datos;
+
         }
         else
         {
