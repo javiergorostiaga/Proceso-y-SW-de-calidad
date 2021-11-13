@@ -92,15 +92,17 @@ public class Gateway implements IGateway {
         //System.out.println("UNOOOO");
         //Iterable<String> iter = Splitter.on("\",").omitEmptyStrings().split(stringobj);
 
-        System.out.println("\n\nPRIMERA PARTE\n\n");
         String[] splitPrimero = stringobj.split(",\"Ratings");
-        //System.out.println(splitPrimero[0].substring(1));
 
-
+        System.out.println("\n\nPRIMERA PARTE\n\n");
         System.out.println(Splitter.on("\",\"").omitEmptyStrings().withKeyValueSeparator("\":\"").split(splitPrimero[0].substring(0, splitPrimero[0].length() - 1).substring(2)));
+        Map<String, String> mapa1 = Splitter.on("\",\"").omitEmptyStrings().withKeyValueSeparator("\":\"").split(splitPrimero[0].substring(0, splitPrimero[0].length() - 1).substring(2));
 
         System.out.println("\n\nSEGUNDA PARTE\n\n");
-        System.out.println(splitPrimero[1].substring(splitPrimero[1].indexOf("Runtime")-1));
+        System.out.println(Splitter.on("\",\"").omitEmptyStrings().withKeyValueSeparator("\":\"").split(splitPrimero[1].substring(0, splitPrimero[1].length()-2).substring(splitPrimero[1].indexOf("Runtime"))));
+        Map<String, String> mapa2 = Splitter.on("\",\"").omitEmptyStrings().withKeyValueSeparator("\":\"").split(splitPrimero[1].substring(0, splitPrimero[1].length() - 2).substring(splitPrimero[1].indexOf("Runtime")));
+
+
         /*
         System.out.println("UNOOOO2");
         String[] splitSegundo;
