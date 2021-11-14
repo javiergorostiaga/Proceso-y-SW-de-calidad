@@ -20,10 +20,8 @@ public class AppService  {
     public boolean exportPeliculas() throws Exception {
         try
         {
-            //dao=new DAO();
-
+            dao=new DAO();
             respuesta = gateway.exportPeliculaGenerico("batman"); //aqui nombres de peliculas
-
             // vamos a empezar solo viendo si funciona con una pelicula
             // luego metemos muchas con un loop desde fichero
             dao.insertPelicula(respuesta);

@@ -107,6 +107,8 @@ public class Gateway implements IGateway {
         }
         System.out.println("PASA");
         System.out.println("HashMap"+hashPelicula);
+        // aqui en vez de devolver hashMap con claves y valor se podria devolver
+        // simplemente un objeto pelicula, una vez que asignemos todos los atributos
         return hashPelicula;
     }
 
