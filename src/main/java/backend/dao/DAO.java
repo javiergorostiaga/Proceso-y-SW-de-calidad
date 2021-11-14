@@ -15,7 +15,7 @@ import java.util.HashMap;
 
 public class DAO implements IDao{
     @Override
-    public void insertPeliculas(ArrayList<HashMap<String, Object>> contributors) {
+    public void insertPelicula(HashMap<String, String> pelicula) {
 
     }
 

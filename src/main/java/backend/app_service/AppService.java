@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class AppService  {
     IGateway gateway;
     IDao dao;
-    ArrayList<HashMap<String, Object>> respuesta;
+    HashMap<String, String> respuesta;
 
     public AppService() {
         gateway = new Gateway();
@@ -26,7 +26,7 @@ public class AppService  {
 
             // vamos a empezar solo viendo si funciona con una pelicula
             // luego metemos muchas con un loop desde fichero
-            dao.insertPeliculas(respuesta);
+            dao.insertPelicula(respuesta);
         } catch (Exception e){
             e.printStackTrace();
             e.getMessage();
