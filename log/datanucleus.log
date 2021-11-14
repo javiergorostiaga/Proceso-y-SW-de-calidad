@@ -390,3 +390,107 @@
 21:40:56,197 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Usuario.class" con definicion enhanced
 21:40:56,197 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Usuario
 21:40:56,197 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 3 clases. Tiempos : input=92 ms, enhance=32 ms, total=124 ms. Compruebe el LOG para los detalles
+23:44:57,026 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.9) para el API "JDO" utilisando el JRE "{2}"
+23:44:57,148 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Genero.class" con definicion enhanced
+23:44:57,148 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Genero
+23:44:57,151 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Pelicula.class" con definicion enhanced
+23:44:57,152 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Pelicula
+23:44:57,153 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Usuario.class" con definicion enhanced
+23:44:57,154 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Usuario
+23:44:57,154 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 3 clases. Tiempos : input=91 ms, enhance=33 ms, total=124 ms. Compruebe el LOG para los detalles
+23:45:58,645 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.9) para el API "JDO" utilisando el JRE "{2}"
+23:45:58,767 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Genero.class" con definicion enhanced
+23:45:58,767 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Genero
+23:45:58,770 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Pelicula.class" con definicion enhanced
+23:45:58,771 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Pelicula
+23:45:58,772 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Usuario.class" con definicion enhanced
+23:45:58,773 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Usuario
+23:45:58,773 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 3 clases. Tiempos : input=92 ms, enhance=32 ms, total=124 ms. Compruebe el LOG para los detalles
+23:47:22,885 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.9) para el API "JDO" utilisando el JRE "{2}"
+23:47:23,009 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Genero.class" con definicion enhanced
+23:47:23,010 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Genero
+23:47:23,013 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Pelicula.class" con definicion enhanced
+23:47:23,013 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Pelicula
+23:47:23,015 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Usuario.class" con definicion enhanced
+23:47:23,015 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Usuario
+23:47:23,015 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 3 clases. Tiempos : input=94 ms, enhance=32 ms, total=126 ms. Compruebe el LOG para los detalles
+23:48:13,657 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.9) para el API "JDO" utilisando el JRE "{2}"
+23:48:13,780 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Genero.class" con definicion enhanced
+23:48:13,781 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Genero
+23:48:13,784 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Pelicula.class" con definicion enhanced
+23:48:13,784 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Pelicula
+23:48:13,786 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Usuario.class" con definicion enhanced
+23:48:13,786 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Usuario
+23:48:13,787 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 3 clases. Tiempos : input=92 ms, enhance=32 ms, total=124 ms. Compruebe el LOG para los detalles
+09:36:19,286 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.9) para el API "JDO" utilisando el JRE "{2}"
+09:36:19,416 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Genero.class" con definicion enhanced
+09:36:19,416 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Genero
+09:36:19,419 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Pelicula.class" con definicion enhanced
+09:36:19,419 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Pelicula
+09:36:19,422 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Usuario.class" con definicion enhanced
+09:36:19,422 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Usuario
+09:36:19,423 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 3 clases. Tiempos : input=96 ms, enhance=35 ms, total=131 ms. Compruebe el LOG para los detalles
+09:37:52,902 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.9) para el API "JDO" utilisando el JRE "{2}"
+09:37:53,028 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Genero.class" con definicion enhanced
+09:37:53,029 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Genero
+09:37:53,032 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Pelicula.class" con definicion enhanced
+09:37:53,032 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Pelicula
+09:37:53,035 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Usuario.class" con definicion enhanced
+09:37:53,035 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Usuario
+09:37:53,035 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 3 clases. Tiempos : input=94 ms, enhance=35 ms, total=129 ms. Compruebe el LOG para los detalles
+09:39:59,130 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.9) para el API "JDO" utilisando el JRE "{2}"
+09:39:59,265 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Genero.class" con definicion enhanced
+09:39:59,266 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Genero
+09:39:59,269 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Pelicula.class" con definicion enhanced
+09:39:59,269 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Pelicula
+09:39:59,271 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Usuario.class" con definicion enhanced
+09:39:59,271 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Usuario
+09:39:59,271 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 3 clases. Tiempos : input=104 ms, enhance=32 ms, total=136 ms. Compruebe el LOG para los detalles
+09:40:39,141 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.9) para el API "JDO" utilisando el JRE "{2}"
+09:40:39,274 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Genero.class" con definicion enhanced
+09:40:39,274 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Genero
+09:40:39,277 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Pelicula.class" con definicion enhanced
+09:40:39,278 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Pelicula
+09:40:39,281 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Usuario.class" con definicion enhanced
+09:40:39,281 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Usuario
+09:40:39,281 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 3 clases. Tiempos : input=102 ms, enhance=34 ms, total=136 ms. Compruebe el LOG para los detalles
+09:43:09,561 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.9) para el API "JDO" utilisando el JRE "{2}"
+09:43:09,682 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Genero.class" con definicion enhanced
+09:43:09,682 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Genero
+09:43:09,685 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Pelicula.class" con definicion enhanced
+09:43:09,685 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Pelicula
+09:43:09,687 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Usuario.class" con definicion enhanced
+09:43:09,688 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Usuario
+09:43:09,688 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 3 clases. Tiempos : input=92 ms, enhance=31 ms, total=123 ms. Compruebe el LOG para los detalles
+09:44:19,705 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.9) para el API "JDO" utilisando el JRE "{2}"
+09:44:19,825 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Genero.class" con definicion enhanced
+09:44:19,826 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Genero
+09:44:19,829 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Pelicula.class" con definicion enhanced
+09:44:19,829 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Pelicula
+09:44:19,831 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Usuario.class" con definicion enhanced
+09:44:19,831 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Usuario
+09:44:19,832 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 3 clases. Tiempos : input=92 ms, enhance=32 ms, total=124 ms. Compruebe el LOG para los detalles
+09:45:41,301 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.9) para el API "JDO" utilisando el JRE "{2}"
+09:45:41,425 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Genero.class" con definicion enhanced
+09:45:41,426 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Genero
+09:45:41,429 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Pelicula.class" con definicion enhanced
+09:45:41,429 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Pelicula
+09:45:41,431 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Usuario.class" con definicion enhanced
+09:45:41,431 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Usuario
+09:45:41,431 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 3 clases. Tiempos : input=93 ms, enhance=33 ms, total=126 ms. Compruebe el LOG para los detalles
+09:46:29,921 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.9) para el API "JDO" utilisando el JRE "{2}"
+09:46:30,047 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Genero.class" con definicion enhanced
+09:46:30,047 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Genero
+09:46:30,050 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Pelicula.class" con definicion enhanced
+09:46:30,051 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Pelicula
+09:46:30,053 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Usuario.class" con definicion enhanced
+09:46:30,053 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Usuario
+09:46:30,054 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 3 clases. Tiempos : input=95 ms, enhance=32 ms, total=127 ms. Compruebe el LOG para los detalles
+10:24:45,053 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.9) para el API "JDO" utilisando el JRE "{2}"
+10:24:45,178 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Genero.class" con definicion enhanced
+10:24:45,178 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Genero
+10:24:45,178 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Pelicula.class" con definicion enhanced
+10:24:45,178 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Pelicula
+10:24:45,178 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\Users\obsessedpanda\Desktop\WorkSpace\Proceso-y-SW-de-calidad\target\classes\backend\objects\Usuario.class" con definicion enhanced
+10:24:45,178 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : backend.objects.Usuario
+10:24:45,178 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 3 clases. Tiempos : input=94 ms, enhance=31 ms, total=125 ms. Compruebe el LOG para los detalles
