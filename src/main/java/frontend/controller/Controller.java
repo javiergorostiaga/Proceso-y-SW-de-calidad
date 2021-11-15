@@ -1,14 +1,13 @@
 package frontend.controller;
 
 import java.util.*;
-import java.io.*;
+
+import backend.objects.Pelicula;
 import frontend.swing.Principal;
 import frontend.remote.RMIServiceLocator;
 
 import common.properties.PropertyManager;
 import common.properties.AppPropertyManager;
-
-import java.rmi.RemoteException;
 
 public class Controller
 {
@@ -22,11 +21,20 @@ public class Controller
         serviceLocator.setService(p.getProperty("ip"),p.getProperty("port"),p.getProperty("serviceName"));
         //new Principal(this);
         Principal.exportData(this);
+
+        Principal.selectPelicula(this);
     }
 
     public boolean exportPeliculas() throws Exception
     {
         return serviceLocator.getService().exportPeliculas();
+    }
+
+    public ArrayList<Pelicula> selectPeliculas() throws Exception
+    {
+
+        return serviceLocator.getService().selectPeliculas();
+
     }
 
     public void exit()
