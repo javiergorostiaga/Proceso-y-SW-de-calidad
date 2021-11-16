@@ -91,14 +91,16 @@ public class DAO implements IDao
         Collection<Pelicula> peliculas = null;
         try
         {
+            System.out.println("Llega a DAO");
             this.transaction.begin();
 
             Query<Pelicula> contributorQuery = this.persistentManager.newQuery("SELECT FROM " +Pelicula.class.getName());
-
+            System.out.println("98");
             peliculas = new ArrayList<>();
             for (Pelicula pelicula : contributorQuery.executeList())
             {
                 peliculas.add(pelicula);
+                System.out.println("103");
             }
             this.transaction.commit();
         }
