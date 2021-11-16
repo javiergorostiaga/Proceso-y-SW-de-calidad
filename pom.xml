@@ -13,6 +13,7 @@
 
     <properties>
         <config.files.dir>resources/</config.files.dir>
+        <doxygen.config.file>${basedir}/src/main/resources/Doxyfile</doxygen.config.file>
         <encoding>UTF-8</encoding>
     </properties>
 
@@ -141,6 +142,40 @@
 
         <plugins>
             <plugin>
+                <groupId>com.soebes.maven.plugins</groupId>
+                <artifactId>doxygen-maven-plugin</artifactId>
+                <version>1.1.0</version>
+                <configuration>
+                    <configurationFile>${doxygen.config.file}</configurationFile>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <!-- here the phase you need -->
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/docs</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/target/doxygen/html</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
@@ -171,6 +206,7 @@
                 <artifactId>datanucleus-maven-plugin</artifactId>
                 <version>5.2.1</version>
                 <configuration>
+                    <fork>false</fork>
                     <log4jConfiguration>${config.files.dir}/log4j.properties</log4jConfiguration>
                     <verbose>true</verbose>
                     <props>${config.files.dir}/datanucleus.properties</props>
