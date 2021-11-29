@@ -6,10 +6,11 @@ import lombok.Setter;
 
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
+import java.io.Serializable;
 
 @PersistenceCapable
 @AllArgsConstructor
-public class Usuario
+public class Usuario implements Serializable
 {
     @PrimaryKey
     @Getter @Setter private int id;

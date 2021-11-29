@@ -94,13 +94,11 @@ public class DAO implements IDao
             System.out.println("Llega a DAO");
             this.transaction.begin();
 
-            Query<Pelicula> contributorQuery = this.persistentManager.newQuery("SELECT FROM " +Pelicula.class.getName());
-            System.out.println("98");
+            Query<Pelicula> peliculaQuery = this.persistentManager.newQuery("SELECT FROM " +Pelicula.class.getName());
             peliculas = new ArrayList<>();
-            for (Pelicula pelicula : contributorQuery.executeList())
+            for (Pelicula pelicula : peliculaQuery.executeList())
             {
                 peliculas.add(pelicula);
-                System.out.println("103");
             }
             this.transaction.commit();
         }
@@ -118,8 +116,8 @@ public class DAO implements IDao
 
             this.persistentManager.close();
         }
-        System.out.println("Array Peliculas ------)"+ ((ArrayList<Pelicula>) peliculas).get(0));
-        return (ArrayList<Pelicula>) peliculas; //ahora solo devolvera una pelicula
+       // System.out.println("Array DAO ------)"+ ((ArrayList<Pelicula>)peliculas).get(0).getActors());
+        return (ArrayList<Pelicula>)peliculas; //ahora solo devolvera una pelicula
     }
 
     @Override

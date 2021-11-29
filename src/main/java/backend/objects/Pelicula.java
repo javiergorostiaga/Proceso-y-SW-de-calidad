@@ -4,13 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.datanucleus.*;
+
+import java.io.Serializable;
 import java.util.Collection;
 
 import javax.jdo.annotations.*;
 
 @PersistenceCapable
 @AllArgsConstructor
-public class Pelicula
+public class Pelicula implements Serializable
 
 {
     @PrimaryKey
@@ -54,5 +56,8 @@ public class Pelicula
         this.genre = genre;
         this.writer = writer;
         this.director = director;
+    }
+
+    public Pelicula() {
     }
 }

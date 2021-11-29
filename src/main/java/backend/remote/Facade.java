@@ -22,7 +22,7 @@ public class Facade extends UnicastRemoteObject implements IFacade {
     public Facade() throws RemoteException
     {
         this.app_service = new AppService();
-        this.dao = new DAO();
+        //this.dao = new DAO();
     }
 
     @Override
@@ -36,6 +36,16 @@ public class Facade extends UnicastRemoteObject implements IFacade {
         {
             return false;
         }
+    }
+
+    @Override
+    public ArrayList<Pelicula> selectPeliculas() throws Exception {
+        System.out.println("* Received selectPeliculas() call from Client");
+        // ArrayList<Pelicula> arrayPeliculaFacade=dao.selectPeliculas();
+        //System.out.println("Array Facade: "+arrayPeliculaFacade.get(0).getActors());
+        return app_service.selectPeliculas();// -----------------
+
+
     }
 
     public static void main(String[] args) throws Exception
@@ -59,11 +69,4 @@ public class Facade extends UnicastRemoteObject implements IFacade {
         Thread.sleep(Integer.MAX_VALUE);
     }
 
-    @Override
-    public ArrayList<Pelicula> selectPeliculas() throws Exception {
-        System.out.println("* Received mostrarData() call from Client");
-        return dao.selectPeliculas();
-
-
-    }
 }

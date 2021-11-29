@@ -4,6 +4,7 @@ import backend.dao.DAO;
 import backend.dao.IDao;
 import backend.gateway.Gateway;
 import backend.gateway.IGateway;
+import backend.objects.Pelicula;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +13,7 @@ public class AppService  {
     IGateway gateway;
     IDao dao;
     HashMap<String, String> respuesta;
+    ArrayList<Pelicula> arrayPelicula;
 
     public AppService() {
         gateway = new Gateway();
@@ -30,6 +32,18 @@ public class AppService  {
             e.getMessage();
         }
         return true; //si los datos son exportados devuelve true
+    }
+
+    public ArrayList<Pelicula> selectPeliculas() throws Exception {
+        try
+        {
+            dao=new DAO();
+            arrayPelicula=dao.selectPeliculas();
+        } catch (Exception e){
+            e.printStackTrace();
+            e.getMessage();
+        }
+        return arrayPelicula; //si los datos son exportados devuelve true
     }
 
     /*

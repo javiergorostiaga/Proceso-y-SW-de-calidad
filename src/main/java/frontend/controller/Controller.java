@@ -20,7 +20,7 @@ public class Controller
         serviceLocator = new RMIServiceLocator();
         serviceLocator.setService(p.getProperty("ip"),p.getProperty("port"),p.getProperty("serviceName"));
         //new Principal(this);
-        Principal.exportData(this);
+        //Principal.exportData(this);
 
         Principal.selectPelicula(this);
     }
@@ -32,8 +32,9 @@ public class Controller
 
     public ArrayList<Pelicula> selectPeliculas() throws Exception
     {
-
-        return serviceLocator.getService().selectPeliculas();
+        ArrayList<Pelicula> arrayPeliculaController=serviceLocator.getService().selectPeliculas();
+        System.out.println(arrayPeliculaController.get(0).getActors());
+        return arrayPeliculaController;
 
     }
 

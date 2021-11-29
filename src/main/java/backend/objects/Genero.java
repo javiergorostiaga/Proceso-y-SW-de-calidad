@@ -3,12 +3,14 @@ package backend.objects;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.io.Serializable;
 import java.util.Collection;
 import javax.jdo.annotations.*;
 
 @PersistenceCapable
 @AllArgsConstructor
-public class Genero
+public class Genero implements Serializable
 {
     @PrimaryKey
     @Getter
