@@ -8,6 +8,10 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 import java.io.Serializable;
 
+/**
+ * @class Usuario
+ * @brief La clase usuario
+ */
 @PersistenceCapable
 @AllArgsConstructor
 public class Usuario implements Serializable

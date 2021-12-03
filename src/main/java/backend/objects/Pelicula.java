@@ -10,6 +10,12 @@ import java.util.Collection;
 
 import javax.jdo.annotations.*;
 
+/**
+ * Esta es la clase peliclua
+ * @class Pelicula
+ * @brief La clase pelicula
+ *
+ */
 @PersistenceCapable
 @AllArgsConstructor
 public class Pelicula implements Serializable
