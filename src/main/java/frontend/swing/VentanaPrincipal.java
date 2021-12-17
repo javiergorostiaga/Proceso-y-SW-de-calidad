@@ -23,6 +23,7 @@ import javax.swing.ImageIcon;
 import javax.swing.border.MatteBorder;
 
 import backend.objects.Pelicula;
+import backend.objects.personas.Persona;
 import frontend.swing.*;
 
 
@@ -31,17 +32,13 @@ public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
 	private HashMap<String, Pelicula> hashPeliculas;
-	/*
-	private HashMap <String,Persona > hashUsuarios;
-*/
+	private HashMap <String, Persona> hashUsuarios;
 
-	public VentanaPrincipal(HashMap<String,Pelicula> hashPeliculass)
+	public VentanaPrincipal(HashMap<String,Pelicula> hashPeliculass, HashMap<String,Persona> hashUsuarioss)
 	{
 		this.hashPeliculas=hashPeliculass;
-		/*
 		this.hashUsuarios=hashUsuarioss;
-		*/
-		
+
 		setTitle("OMDB");
 		setResizable(false);//para que no se pueda agrandar	
 		VentanaPrincipal.this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);//-------para que no se cierre y defina yo que hacer
@@ -106,23 +103,21 @@ public class VentanaPrincipal extends JFrame {
 			   }
 		});
 	}
-/*
+
 	public HashMap<String, Persona> getHashUsuarios() {
 		return hashUsuarios;
 	}
 
-
 	public void setHashUsuarios(HashMap<String, Persona> hashUsuarios) {
 		this.hashUsuarios = hashUsuarios;
 	}
- */
 
 	public HashMap<String, Pelicula> getHashPeliculas() {
 		return hashPeliculas;
 	}
 
 
-	public void setHashLibros(HashMap<String, Pelicula> hashPeliculas) {
+	public void setHashPeliculas(HashMap<String, Pelicula> hashPeliculas) {
 		this.hashPeliculas = hashPeliculas;
 	}
 

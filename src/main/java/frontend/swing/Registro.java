@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import backend.objects.Pelicula;
+import backend.objects.personas.Persona;
+import backend.objects.personas.Usuario;
 import frontend.swing.Login;
 import frontend.swing.VentanaPrincipal;
 
@@ -49,7 +51,7 @@ public class Registro extends JFrame {
 		setResizable(false);
 		principal = ventanaPrincipal;
 		setTitle("Login");
-		HashMap<String, Pelicula> hashPeliculas; //ventanaPrincipal.getHashUsuarios();
+		HashMap<String, Persona> hashUsuarios=ventanaPrincipal.getHashUsuarios();
 		
 		setTitle("Registro de Usuario");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -104,28 +106,22 @@ public class Registro extends JFrame {
 					String username=textUsuario.getText();
 					boolean valor=false;
 					try {
-						/*
+
 						comprobarUsuario(username,hashUsuarios);//valor=
-						UsuarioEstandar nuevoUsuario=null;//solo se pueden crear usuarios estandar luego se dara la posibilidad de que sean premium
+						Usuario nuevoUsuario=null;//solo se pueden crear usuarios estandar luego se dara la posibilidad de que sean premium
 						String contrasenya=passwordField.getText();
-						int fechaAlta=Utilidades.obtenerFechaActual();
 						String nombreReal=textReal.getText();
-						double calific = 0;//hasta que alguien les valore ser� 0, lo que aparece en calificaci�n es la calificaci�n de la �ltima operaci�n de venta
 						comprobarPrimaryKey(username,hashUsuarios);//compruebo que nombre real y la pass no coincidan con el username porque tiene que ser unique en la base de datos
-						nuevoUsuario = new UsuarioEstandar(username,contrasenya,nombreReal,fechaAlta,calific);
+						nuevoUsuario = new Usuario(username,contrasenya,nombreReal);
 						hashUsuarios.put(username, nuevoUsuario);
 						principal.setHashUsuarios(hashUsuarios);
-						DBManager myDBManager= new DBManager("Univook.db");//----------BASE DE DATOS -- Insertar en Usuarios
-				        myDBManager.createLink();//----------
-						myDBManager.insertUsuarios(hashUsuarios, username);//----------INSERTA
-				        myDBManager.closeLink();//----------CIERRO BBDD
+
+						// AQUÍ INSERTAR EL USUARIO A LA BASE DE DATOS
+
 						cancelar();
 
 					}catch(Exception e1){
-						JOptionPane.showMessageDialog(Registro.this, e1.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);//icono X rojo de error*/
-					}
-						catch (Exception e1) {
-						JOptionPane.showMessageDialog(Registro.this, e1.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);//icono X rojo de error
+						JOptionPane.showMessageDialog(Registro.this, e1.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
 					}
 				}
 				else
@@ -162,7 +158,7 @@ public class Registro extends JFrame {
 	}
 	
 
-	public boolean comprobarUsuario(String username,HashMap<String, Pelicula> hashUsuarios) throws Exception //static para acceder desde modificar si cambia nombre usuario
+	public boolean comprobarUsuario(String username,HashMap<String, Persona> hashUsuarios) throws Exception //static para acceder desde modificar si cambia nombre usuario
 	{
 		if(hashUsuarios.containsKey(username))
 		{
@@ -172,7 +168,7 @@ public class Registro extends JFrame {
 		
 	}
 	
-	public boolean comprobarPrimaryKey(String username,HashMap<String, Pelicula> hashUsuarios) throws Exception //static para acceder desde modificar si cambia nombre usuario
+	public boolean comprobarPrimaryKey(String username,HashMap<String, Persona> hashUsuarios) throws Exception //static para acceder desde modificar si cambia nombre usuario
 	{
 		if(username.equals(passwordField.getText()))
 		{

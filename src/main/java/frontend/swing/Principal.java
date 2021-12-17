@@ -17,14 +17,17 @@ public class Principal
 
     public static void selectPelicula(final Controller controller) throws  Exception{
         System.out.println("CLASE PRINCIPAL");
+
         controller.selectPeliculas(); // ESTO TIENE QUE SER UN HASHMAP DE <IDPELICULA (UN STRING), PELICULA>
-        VentanaPrincipal a = new VentanaPrincipal(null);
+        // AQUÍ TB SE TIENE QUE HACER UN SELECT DE LOS USUARIOS Y MANDAR EL HASHMAP DE PELICULAS Y EL DE USUARIOS A VENTANA PRINCIPAL
+
+        VentanaPrincipal a = new VentanaPrincipal(null,null);
         a.setLocationRelativeTo(null);//para que aparezca en el medio
         a.setVisible(true);
-        //System.out.println(arrayPeliculas.get(0).getActors());
-        //junit contiperf
-        //junit mockito...
+
 
     }
 
 }
+//junit contiperf
+//junit mockito...

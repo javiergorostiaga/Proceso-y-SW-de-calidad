@@ -5,6 +5,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import backend.objects.Pelicula;
+import backend.objects.personas.Administrador;
+import backend.objects.personas.Persona;
+import backend.objects.personas.Usuario;
 import frontend.swing.*;
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -37,10 +40,9 @@ public class Login extends JFrame{
 	private JLabel lblBienvenido;
 	private JPanel panel;
 	private JLabel lblNewLabel;
-	private HashMap <String, Pelicula> hashPeliculas;
+	private HashMap <String, Persona> hashUsuarios;
 	private VentanaPrincipal ventanaAnterior ;
-	public static HashMap<String, Boolean> hashEsperar=new HashMap<>();
-	
+
 	public VentanaPrincipal getVentanaAnterior() {
 		return ventanaAnterior;
 	}
@@ -56,7 +58,7 @@ public class Login extends JFrame{
 		setResizable(false);
 		ventanaAnterior = principal;
 		setTitle("Login");
-		//this.hashPeliculas=principal.getHashPeliculas();
+		this.hashUsuarios=principal.getHashUsuarios();
 		
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 481, 307);
@@ -106,8 +108,10 @@ public class Login extends JFrame{
 		panel.setLayout(null);
 		
 		lblNewLabel = new JLabel("New label");
+
 		//NO FUNCIONA LA FOTO POR AHORA
 		//lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/imagenes/loginFoto.png")));
+
 		lblNewLabel.setBounds(22, 62, 128, 130);
 		panel.add(lblNewLabel);
 		
@@ -115,30 +119,16 @@ public class Login extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				
 				String usuario = textUsuario.getText();
-				if(hashEsperar.containsKey(usuario)&&hashEsperar.get(usuario))
-				{
-					JOptionPane.showMessageDialog(Login.this, "Ha agotado el maximo de intentos para este usuario. Pruebe otra vez en ");
-				}
-				else
-				{
-					boolean bien=true;
-
-					//SOLO SE EJECUTA SI LO OTRO NO ES TRES
-					if(bien)
-					{
-						String contrasenya=passUsuario.getText();
-						try {
-							boolean encontrado=comprobarUsuario(usuario, contrasenya,hashPeliculas);
-							if(encontrado) {
-								informacion(usuario);//------------------------------------
-								}
+				String contrasenya=passUsuario.getText();
+				try {
+					boolean encontrado=comprobarUsuario(usuario, contrasenya,hashUsuarios);
+					if(encontrado) {
+						informacion(usuario); // AQUÍ ES DONDE VE SI ES ADMIN O USER
 						}
-						catch(Exception e1) {
-							JOptionPane.showMessageDialog(Login.this, e1.getMessage());//en vez de "No existe usuario" puedes poner e1.getMessage() para que te de el mensaje de la excepci�n
-						}
-					}
 				}
-				
+				catch(Exception e1) {
+					JOptionPane.showMessageDialog(Login.this, e1.getMessage());//en vez de "No existe usuario" puedes poner e1.getMessage() para que te de el mensaje de la excepci�n
+				}
 			}
 		});
 		btnCancel.addActionListener(new ActionListener() {
@@ -160,14 +150,14 @@ public class Login extends JFrame{
 	}
 
 
-	public boolean comprobarUsuario(String usuario, String contrasenya, HashMap <String,Pelicula > hashPeliculas) throws Exception {//hay que avisar que este m�todo lanza excepciones
+	public boolean comprobarUsuario(String usuario, String contrasenya, HashMap <String,Persona> hashPeliculas) throws Exception {//hay que avisar que este m�todo lanza excepciones
 		if(!hashPeliculas.containsKey(usuario))
 		{
-			throw new Exception("Usuario no existente");//sale y ya no sigue el c�digo hacia abajo
+			throw new Exception("Usuario no existente");
 		}
 		else
 		{
-			String passDelHash=hashPeliculas.get(usuario).getTitle();//este get ensi es la contrasenya
+			String passDelHash=hashPeliculas.get(usuario).getPassword();
 			if(passDelHash.equals(contrasenya))
 			{
 				return true;
@@ -180,22 +170,20 @@ public class Login extends JFrame{
 
 	public void informacion(String usuario)
 	{
-		/*if(hashPeliculas.get(usuario) instanceof Administrador)//si es administrador le mando al menu de administradores de Univook
+		if(hashUsuarios.get(usuario) instanceof Administrador)//si es administrador le mando al menu de administradores de Univook
 		{
-			//VentanaAdministrador a = new VentanaAdministrador(Login.this,(Administrador)(hashUsuarios.get(usuario)));
-			//a.setLocationRelativeTo(Login.this);
-			//a.setVisible(true);
-			//Login.this.setVisible(false);
-		}
-		else 
-		{
-			ThreadContar.detener(usuario);
-			UsuarioMenu a = new UsuarioMenu((Usuario)(hashUsuarios.get(usuario)),Login.this);
+			VentanaAdministrador a = new VentanaAdministrador(Login.this,(Administrador)(hashUsuarios.get(usuario)));
 			a.setLocationRelativeTo(Login.this);
 			a.setVisible(true);
 			Login.this.setVisible(false);
 		}
-		 */
+		else 
+		{
+			VentanaUsuario a = new VentanaUsuario((Usuario) (hashUsuarios.get(usuario)),Login.this);
+			a.setLocationRelativeTo(Login.this);
+			a.setVisible(true);
+			Login.this.setVisible(false);
+		}
 	}
 	
 }
