@@ -5,6 +5,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Properties;
 
 import backend.app_service.AppService;
@@ -39,13 +40,11 @@ public class Facade extends UnicastRemoteObject implements IFacade {
     }
 
     @Override
-    public ArrayList<Pelicula> selectPeliculas() throws Exception {
+    public HashMap<String, Pelicula> selectPeliculas() throws Exception {
         System.out.println("* Received selectPeliculas() call from Client");
         // ArrayList<Pelicula> arrayPeliculaFacade=dao.selectPeliculas();
         //System.out.println("Array Facade: "+arrayPeliculaFacade.get(0).getActors());
         return app_service.selectPeliculas();// -----------------
-
-
     }
 
     public static void main(String[] args) throws Exception

@@ -3,6 +3,8 @@ package frontend.controller;
 import java.util.*;
 
 import backend.objects.Pelicula;
+import backend.objects.personas.Persona;
+import backend.objects.personas.Usuario;
 import frontend.swing.Principal;
 import frontend.remote.RMIServiceLocator;
 
@@ -30,12 +32,18 @@ public class Controller
         return serviceLocator.getService().exportPeliculas();
     }
 
-    public ArrayList<Pelicula> selectPeliculas() throws Exception
+    public HashMap<String, Pelicula> selectPeliculas() throws Exception
     {
-        ArrayList<Pelicula> arrayPeliculaController=serviceLocator.getService().selectPeliculas();
-        System.out.println(arrayPeliculaController.get(0).getActors());
+        HashMap<String, Pelicula> arrayPeliculaController = new HashMap<String, Pelicula>();
+        //ArrayList<Pelicula> arrayPeliculaController =serviceLocator.getService().selectPeliculas();
+        //System.out.println(arrayPeliculaController.get(0).getActors());
         return arrayPeliculaController;
+    }
 
+    public HashMap<String, Persona> selectUsuarios() throws Exception
+    {
+        HashMap<String, Persona> arrayUsuarioController = new HashMap<String, Persona>();
+        return arrayUsuarioController;
     }
 
     public void exit()

@@ -1,12 +1,15 @@
 package frontend.swing;
 
 import backend.objects.Pelicula;
+import backend.objects.personas.Persona;
+import backend.objects.personas.Usuario;
 import frontend.controller.Controller;
 import org.checkerframework.checker.units.qual.A;
 
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Principal
 {
@@ -18,14 +21,15 @@ public class Principal
     public static void selectPelicula(final Controller controller) throws  Exception{
         System.out.println("CLASE PRINCIPAL");
 
-        controller.selectPeliculas(); // ESTO TIENE QUE SER UN HASHMAP DE <IDPELICULA (UN STRING), PELICULA>
+        //HashMap<String, Pelicula> hmPelis = controller.selectPeliculas();
+        // ESTO TIENE QUE SER UN HASHMAP DE <IDPELICULA (UN STRING), PELICULA>
         // AQUÍ TB SE TIENE QUE HACER UN SELECT DE LOS USUARIOS Y MANDAR EL HASHMAP DE PELICULAS Y EL DE USUARIOS A VENTANA PRINCIPAL
 
-        VentanaPrincipal a = new VentanaPrincipal(null,null);
+        HashMap<String, Persona> hmUsuarios = controller.selectUsuarios();
+
+        VentanaPrincipal a = new VentanaPrincipal(null, hmUsuarios);
         a.setLocationRelativeTo(null);//para que aparezca en el medio
         a.setVisible(true);
-
-
     }
 
 }

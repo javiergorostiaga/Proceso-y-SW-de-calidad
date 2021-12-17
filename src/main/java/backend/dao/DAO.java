@@ -87,18 +87,17 @@ public class DAO implements IDao
     }
 
     @Override
-    public ArrayList<Pelicula> selectPeliculas() {
-        Collection<Pelicula> peliculas = null;
+    public HashMap<String, Pelicula> selectPeliculas() {
+        HashMap<String, Pelicula> peliculas = new HashMap<String, Pelicula>();
         try
         {
             System.out.println("Llega a DAO");
             this.transaction.begin();
 
             Query<Pelicula> peliculaQuery = this.persistentManager.newQuery("SELECT FROM " +Pelicula.class.getName());
-            peliculas = new ArrayList<>();
             for (Pelicula pelicula : peliculaQuery.executeList())
             {
-                peliculas.add(pelicula);
+                peliculas.put(pelicula.getImdbID(), pelicula);
             }
             this.transaction.commit();
         }
@@ -117,7 +116,7 @@ public class DAO implements IDao
             this.persistentManager.close();
         }
        // System.out.println("Array DAO ------)"+ ((ArrayList<Pelicula>)peliculas).get(0).getActors());
-        return (ArrayList<Pelicula>)peliculas; //ahora solo devolvera una pelicula
+        return peliculas; //ahora solo devolvera una pelicula
     }
 
     @Override

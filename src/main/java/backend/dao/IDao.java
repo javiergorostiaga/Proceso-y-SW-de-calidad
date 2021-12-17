@@ -9,6 +9,6 @@ import java.util.HashMap;
 public interface IDao {
     void insertPelicula(HashMap<String, String> pelicula);
     void insertGeneros(ArrayList<HashMap<String, Object>> generos);
-    ArrayList<Pelicula> selectPeliculas();
+    HashMap<String, Pelicula> selectPeliculas();
     ArrayList<Genero> selectGeneros();
 }

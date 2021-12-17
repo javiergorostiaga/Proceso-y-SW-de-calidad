@@ -13,7 +13,7 @@ public class AppService  {
     IGateway gateway;
     IDao dao;
     HashMap<String, String> respuesta;
-    ArrayList<Pelicula> arrayPelicula;
+    HashMap<String, Pelicula> hmPelicula;
 
     public AppService() {
         gateway = new Gateway();
@@ -34,16 +34,16 @@ public class AppService  {
         return true; //si los datos son exportados devuelve true
     }
 
-    public ArrayList<Pelicula> selectPeliculas() throws Exception {
+    public HashMap<String, Pelicula> selectPeliculas() throws Exception {
         try
         {
             dao=new DAO();
-            arrayPelicula=dao.selectPeliculas();
+            hmPelicula=dao.selectPeliculas();
         } catch (Exception e){
             e.printStackTrace();
             e.getMessage();
         }
-        return arrayPelicula; //si los datos son exportados devuelve true
+        return hmPelicula; //si los datos son exportados devuelve true
     }
 
     /*
