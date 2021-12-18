@@ -45,6 +45,7 @@ public class Facade extends UnicastRemoteObject implements IFacade {
         System.out.println("* Received selectPeliculas() call from Client");
         // ArrayList<Pelicula> arrayPeliculaFacade=dao.selectPeliculas();
         //System.out.println("Array Facade: "+arrayPeliculaFacade.get(0).getActors());
+        System.out.println("Pelis funcionan");
         return app_service.selectPeliculas();// -----------------
     }
 
@@ -52,6 +53,7 @@ public class Facade extends UnicastRemoteObject implements IFacade {
     public HashMap<String, Persona> selectUsuarios() throws Exception {
         System.out.println("* Received selectUsuarioa() call from Client");
         //
+        System.out.println("Usuarios funcionan");
         return app_service.selectUsuarios();
     }
 

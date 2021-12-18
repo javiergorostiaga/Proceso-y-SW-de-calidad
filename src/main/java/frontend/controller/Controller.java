@@ -32,18 +32,18 @@ public class Controller
         return serviceLocator.getService().exportPeliculas();
     }
 
-    public HashMap<String, Pelicula> selectPeliculas() throws Exception
+    public HashMap<String, Pelicula> selectPeliculass() throws Exception
     {
         HashMap<String, Pelicula> hmPeliculaController = new HashMap<String, Pelicula>();
-        //hmPeliculaController =serviceLocator.getService().selectPeliculas();
+        hmPeliculaController =serviceLocator.getService().selectPeliculas();
         // DA ERROR LA ANTERIOR LÍNEA, PERO NO POR EL DAO (LO HE PROBADO)
         return hmPeliculaController;
     }
 
-    public HashMap<String, Persona> selectUsuarios() throws Exception
+    public HashMap<String, Persona> selectUsuarioss() throws Exception
     {
         HashMap<String, Persona> hmUsuarioController = new HashMap<String, Persona>();
-        //hmUsuarioController = serviceLocator.getService().selectUsuarios();
+        hmUsuarioController = serviceLocator.getService().selectUsuarios();
         // DA ERROR LA ANTERIOR LÍNEA, PERO NO POR EL DAO (LO HE PROBADO)
         return hmUsuarioController;
     }

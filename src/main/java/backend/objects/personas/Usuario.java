@@ -31,6 +31,10 @@ public class Usuario extends Persona implements Serializable
 		this.nombreReal = nombreReal;
 	}
 
+	public String getNombreReal() { return nombreReal; }
+
+	public void setNombreReal(String nombreReal) { this.nombreReal = nombreReal; }
+
 }
 
 
