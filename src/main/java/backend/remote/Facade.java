@@ -10,6 +10,7 @@ import java.util.Properties;
 
 import backend.app_service.AppService;
 import backend.objects.Pelicula;
+import backend.objects.personas.Persona;
 import common.remote.IFacade;
 import common.properties.PropertyManager;
 import common.properties.AppPropertyManager;
@@ -45,6 +46,13 @@ public class Facade extends UnicastRemoteObject implements IFacade {
         // ArrayList<Pelicula> arrayPeliculaFacade=dao.selectPeliculas();
         //System.out.println("Array Facade: "+arrayPeliculaFacade.get(0).getActors());
         return app_service.selectPeliculas();// -----------------
+    }
+
+    @Override
+    public HashMap<String, Persona> selectUsuarios() throws Exception {
+        System.out.println("* Received selectUsuarioa() call from Client");
+        //
+        return app_service.selectUsuarios();
     }
 
     public static void main(String[] args) throws Exception

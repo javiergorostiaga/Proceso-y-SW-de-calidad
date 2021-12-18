@@ -21,13 +21,10 @@ public class Principal
     public static void selectPelicula(final Controller controller) throws  Exception{
         System.out.println("CLASE PRINCIPAL");
 
-        //HashMap<String, Pelicula> hmPelis = controller.selectPeliculas();
-        // ESTO TIENE QUE SER UN HASHMAP DE <IDPELICULA (UN STRING), PELICULA>
-        // AQUÍ TB SE TIENE QUE HACER UN SELECT DE LOS USUARIOS Y MANDAR EL HASHMAP DE PELICULAS Y EL DE USUARIOS A VENTANA PRINCIPAL
-
+        HashMap<String, Pelicula> hmPeliculas = controller.selectPeliculas();
         HashMap<String, Persona> hmUsuarios = controller.selectUsuarios();
 
-        VentanaPrincipal a = new VentanaPrincipal(null, hmUsuarios);
+        VentanaPrincipal a = new VentanaPrincipal(hmPeliculas, hmUsuarios);
         a.setLocationRelativeTo(null);//para que aparezca en el medio
         a.setVisible(true);
     }
