@@ -11,6 +11,7 @@ import java.util.Properties;
 import backend.app_service.AppService;
 import backend.objects.Pelicula;
 import backend.objects.personas.Persona;
+import backend.objects.personas.Usuario;
 import common.remote.IFacade;
 import common.properties.PropertyManager;
 import common.properties.AppPropertyManager;
@@ -39,6 +40,20 @@ public class Facade extends UnicastRemoteObject implements IFacade {
             return false;
         }
     }
+
+    @Override
+    public boolean exportUsuarios(Usuario usuario) throws Exception {
+        System.out.println("* Received exportData() call from Client");
+        if (app_service.exportUsuarios(usuario)) //luego meteremos and si hay que hacer mas exports
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 
     @Override
     public HashMap<String, Pelicula> selectPeliculas() throws Exception {

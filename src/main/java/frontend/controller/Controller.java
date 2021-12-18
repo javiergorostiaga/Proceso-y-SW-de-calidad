@@ -23,7 +23,6 @@ public class Controller
         serviceLocator.setService(p.getProperty("ip"),p.getProperty("port"),p.getProperty("serviceName"));
         //new Principal(this);
         //Principal.exportData(this);
-
         Principal.selectPelicula(this);
     }
 
@@ -44,13 +43,17 @@ public class Controller
     {
         HashMap<String, Persona> hmUsuarioController = new HashMap<String, Persona>();
         hmUsuarioController = serviceLocator.getService().selectUsuarios();
-        // DA ERROR LA ANTERIOR LÍNEA, PERO NO POR EL DAO (LO HE PROBADO)
         return hmUsuarioController;
     }
 
     public void exit()
     {
         System.exit(0);
+    }
+
+    public  boolean exportUsuario(Usuario usuario) throws Exception
+    {
+        return serviceLocator.getService().exportUsuarios(usuario);
     }
 
     public static void main(String[] args) throws Exception

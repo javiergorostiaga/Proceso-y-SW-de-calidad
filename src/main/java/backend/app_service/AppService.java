@@ -6,6 +6,7 @@ import backend.gateway.Gateway;
 import backend.gateway.IGateway;
 import backend.objects.Pelicula;
 import backend.objects.personas.Persona;
+import backend.objects.personas.Usuario;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +30,18 @@ public class AppService  {
             // vamos a empezar solo viendo si funciona con una pelicula
             // luego metemos muchas con un loop desde fichero
             dao.insertPelicula(respuesta);
+        } catch (Exception e){
+            e.printStackTrace();
+            e.getMessage();
+        }
+        return true; //si los datos son exportados devuelve true
+    }
+
+    public boolean exportUsuarios(Usuario usuario) throws Exception {
+        try
+        {
+            dao=new DAO();
+            dao.insertUsuario(usuario);
         } catch (Exception e){
             e.printStackTrace();
             e.getMessage();

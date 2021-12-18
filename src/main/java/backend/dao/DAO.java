@@ -5,6 +5,7 @@ import backend.objects.Pelicula;
 
 
 import backend.objects.personas.Persona;
+import backend.objects.personas.Usuario;
 import org.json.simple.JSONObject;
 
 import javax.jdo.*;
@@ -63,6 +64,40 @@ public class DAO implements IDao
                                 hashPelicula.get("Writer"), //* si hay varios se meten como string separados por coma
                                 hashPelicula.get("Director")
                         ));
+            //}
+            this.transaction.commit();
+        }
+        catch(Exception ex)
+        {
+            System.err.println("* Exception inserting data into db: " + ex.getMessage());
+        }
+
+        finally
+        {
+            if (this.transaction.isActive())
+            {
+                this.transaction.rollback();
+            }
+
+            this.persistentManager.close();
+        }
+    }
+
+    @Override
+    public void insertUsuario(Usuario usuario ) {
+        try
+        {
+            this.transaction.begin();
+
+            this.persistentManager.makePersistent(
+                    new Usuario(
+
+                            usuario.getNombreUsuario(),
+                            usuario.getNombreReal(),
+                            usuario.getPassword()
+
+
+                    ));
             //}
             this.transaction.commit();
         }

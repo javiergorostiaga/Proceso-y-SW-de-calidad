@@ -18,6 +18,11 @@ public class Principal
         return controller.exportPeliculas(); //lo que hace que se metan las peliculas por ahora
     }
 
+    public static boolean exportUsuario(final Controller controller, Usuario usuario) throws Exception
+    {
+        return controller.exportUsuario(usuario); //lo que hace que se metan las peliculas por ahora
+    }
+
     public static void selectPelicula(final Controller controller) throws  Exception{
         System.out.println("CLASE PRINCIPAL");
 

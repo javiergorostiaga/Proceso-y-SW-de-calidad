@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import backend.objects.Pelicula;
 import backend.objects.personas.Persona;
 import backend.objects.personas.Usuario;
+import frontend.controller.Controller;
 import frontend.swing.Login;
 import frontend.swing.VentanaPrincipal;
 
@@ -117,6 +118,9 @@ public class Registro extends JFrame {
 						principal.setHashUsuarios(hashUsuarios);
 
 						// AQUÍ INSERTAR EL USUARIO A LA BASE DE DATOS
+
+						// No funciona sin que el metodo sea statico...Principal.exportUsuario(null, nuevoUsuario);
+
 
 						cancelar();
 
