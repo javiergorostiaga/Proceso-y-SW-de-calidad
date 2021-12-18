@@ -47,7 +47,6 @@ public class Login extends JFrame{
 		return ventanaAnterior;
 	}
 
-
 	public Login() throws HeadlessException {
 		super();//lo uso para hacer el test con JUnit para no tener que pasar ning�n par�metro.
 	}
@@ -121,7 +120,7 @@ public class Login extends JFrame{
 				String usuario = textUsuario.getText();
 				String contrasenya=passUsuario.getText();
 				try {
-					boolean encontrado=comprobarUsuario(usuario, contrasenya,hashUsuarios);
+					boolean encontrado=comprobarUsuario(usuario, contrasenya, hashUsuarios);
 					if(encontrado) {
 						informacion(usuario); // AQUÍ ES DONDE VE SI ES ADMIN O USER
 						}
@@ -170,16 +169,16 @@ public class Login extends JFrame{
 
 	public void informacion(String usuario)
 	{
-		if(hashUsuarios.get(usuario) instanceof Administrador)//si es administrador le mando al menu de administradores de Univook
+		if(hashUsuarios.get(usuario) instanceof Administrador || usuario.equals("admin"))//si es administrador le mando al menu de administradores de Univook
 		{
-			VentanaAdministrador a = new VentanaAdministrador(Login.this,(Administrador)(hashUsuarios.get(usuario)));
+			VentanaAdministrador a = new VentanaAdministrador(Login.this, (hashUsuarios.get(usuario)));
 			a.setLocationRelativeTo(Login.this);
 			a.setVisible(true);
 			Login.this.setVisible(false);
 		}
 		else 
 		{
-			VentanaUsuario a = new VentanaUsuario((Usuario) (hashUsuarios.get(usuario)),Login.this);
+			VentanaUsuario a = new VentanaUsuario((hashUsuarios.get(usuario)),Login.this);
 			a.setLocationRelativeTo(Login.this);
 			a.setVisible(true);
 			Login.this.setVisible(false);

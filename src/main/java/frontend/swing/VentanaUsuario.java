@@ -1,6 +1,7 @@
 package frontend.swing;
 
 import backend.objects.Pelicula;
+import backend.objects.personas.Persona;
 import backend.objects.personas.Usuario;
 
 import javax.swing.JFrame;
@@ -11,14 +12,14 @@ public class VentanaUsuario extends JFrame
     private Login ventanaAnterior;
     private VentanaPrincipal principal;
     private HashMap<String, Pelicula> hashPeliculas;
-    private Usuario usuario;
+    private Persona usuario;
 
     public Login getVentanaAnterior() {
             return ventanaAnterior;
 
     }
 
-    public VentanaUsuario(Usuario usuarioo, Login login) {
+    public VentanaUsuario(Persona usuarioo, Login login) {
         setResizable(false);
         ventanaAnterior = login;
         principal = login.getVentanaAnterior();

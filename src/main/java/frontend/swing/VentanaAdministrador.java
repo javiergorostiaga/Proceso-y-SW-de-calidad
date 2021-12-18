@@ -35,7 +35,7 @@ public class VentanaAdministrador extends JFrame {
     //private HashMap <String, Persona> hashUsuarios;
     private HashMap<String, Pelicula> hashPeliculas;
     private JList <String> list;
-    private Administrador a;
+    private Persona a;
     private Login ventanaAnterior;
     private VentanaPrincipal principal;
 
@@ -45,7 +45,7 @@ public class VentanaAdministrador extends JFrame {
     }
 
 
-    public VentanaAdministrador(Login login, Administrador a)
+    public VentanaAdministrador(Login login, Persona a)
     {
         setResizable(false);
         setTitle("Menu "+a.getNombreUsuario());

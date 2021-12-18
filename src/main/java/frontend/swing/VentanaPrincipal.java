@@ -32,7 +32,7 @@ public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
 	private HashMap<String, Pelicula> hashPeliculas;
-	private HashMap <String, Persona> hashUsuarios;
+	private HashMap<String, Persona> hashUsuarios;
 
 	public VentanaPrincipal(HashMap<String,Pelicula> hashPeliculass, HashMap<String,Persona> hashUsuarioss)
 	{
@@ -71,7 +71,7 @@ public class VentanaPrincipal extends JFrame {
 		//NO FUNCIONA LA FOTO POR AHORA
 		//label.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/imagenes/fondo.jpg")));
 		
-		//---------------------INICIAR SESIN---------------------
+		//---------------------REGISTRO---------------------
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -83,7 +83,8 @@ public class VentanaPrincipal extends JFrame {
 		});
 		btnRegistrarse.setBounds(320, 216, 199, 37);
 		contentPane.add(btnRegistrarse);
-		
+
+		//INICIAR SESION
 		opcionesUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login a=new Login(VentanaPrincipal.this);
