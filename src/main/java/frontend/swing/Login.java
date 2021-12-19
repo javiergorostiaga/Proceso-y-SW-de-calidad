@@ -8,6 +8,7 @@ import backend.objects.Pelicula;
 import backend.objects.personas.Administrador;
 import backend.objects.personas.Persona;
 import backend.objects.personas.Usuario;
+import frontend.controller.Controller;
 import frontend.swing.*;
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -42,6 +43,7 @@ public class Login extends JFrame{
 	private JLabel lblNewLabel;
 	private HashMap <String, Persona> hashUsuarios;
 	private VentanaPrincipal ventanaAnterior ;
+	private Controller controller;
 
 	public VentanaPrincipal getVentanaAnterior() {
 		return ventanaAnterior;
@@ -52,8 +54,10 @@ public class Login extends JFrame{
 	}
 
 
-	public Login(VentanaPrincipal principal)
+	public Login(VentanaPrincipal principal, Controller controller)
 	{
+		this.controller = controller;
+
 		setResizable(false);
 		ventanaAnterior = principal;
 		setTitle("Login");
@@ -174,7 +178,7 @@ public class Login extends JFrame{
 		}
 		else 
 		{
-			VentanaUsuario a = new VentanaUsuario((hashUsuarios.get(usuario)),Login.this);
+			VentanaUsuario a = new VentanaUsuario((hashUsuarios.get(usuario)),Login.this, controller);
 			a.setLocationRelativeTo(Login.this);
 			a.setVisible(true);
 			Login.this.setVisible(false);

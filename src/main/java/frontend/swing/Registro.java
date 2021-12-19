@@ -39,6 +39,7 @@ public class Registro extends JFrame {
 	private JTextField textReal;
 	private VentanaPrincipal principal ;	
 	private JPasswordField passwordField;
+	private Controller controller;
 	
 
 	public Registro() throws HeadlessException {
@@ -47,8 +48,9 @@ public class Registro extends JFrame {
 		passwordField = new JPasswordField();
 	}
 
-	public Registro(VentanaPrincipal ventanaPrincipal) {
-		
+	public Registro(VentanaPrincipal ventanaPrincipal, Controller controller) {
+		this.controller = controller;
+
 		setResizable(false);
 		principal = ventanaPrincipal;
 		setTitle("Login");
@@ -113,15 +115,13 @@ public class Registro extends JFrame {
 						String contrasenya=passwordField.getText();
 						String nombreReal=textReal.getText();
 						comprobarPrimaryKey(username,hashUsuarios);//compruebo que nombre real y la pass no coincidan con el username porque tiene que ser unique en la base de datos
-						nuevoUsuario = new Usuario(username,contrasenya,nombreReal);
+						nuevoUsuario = new Usuario(username, contrasenya, nombreReal);
 						hashUsuarios.put(username, nuevoUsuario);
 						principal.setHashUsuarios(hashUsuarios);
 
-						// AQUÍ INSERTAR EL USUARIO A LA BASE DE DATOS
-
-						// No funciona sin que el metodo sea statico...Principal.exportUsuario(null, nuevoUsuario);
-
-
+						// AQUÍ INSERTA EL USUARIO A LA BASE DE DATOS
+						Principal.exportUsuario(controller, nuevoUsuario);
+						JOptionPane.showMessageDialog(null, "¡Te has registrado correctamente!");
 						cancelar();
 
 					}catch(Exception e1){

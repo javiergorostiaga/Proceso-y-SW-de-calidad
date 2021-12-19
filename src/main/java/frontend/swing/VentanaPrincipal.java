@@ -24,6 +24,7 @@ import javax.swing.border.MatteBorder;
 
 import backend.objects.Pelicula;
 import backend.objects.personas.Persona;
+import frontend.controller.Controller;
 import frontend.swing.*;
 
 
@@ -34,7 +35,7 @@ public class VentanaPrincipal extends JFrame {
 	private HashMap<String, Pelicula> hashPeliculas;
 	private HashMap<String, Persona> hashUsuarios;
 
-	public VentanaPrincipal(HashMap<String,Pelicula> hashPeliculass, HashMap<String,Persona> hashUsuarioss)
+	public VentanaPrincipal(Controller controller, HashMap<String,Pelicula> hashPeliculass, HashMap<String,Persona> hashUsuarioss)
 	{
 		this.hashPeliculas=hashPeliculass;
 		this.hashUsuarios=hashUsuarioss;
@@ -73,7 +74,7 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Registro a=new Registro(VentanaPrincipal.this);
+				Registro a=new Registro(VentanaPrincipal.this, controller);
 				a.setLocationRelativeTo(VentanaPrincipal.this);
 				a.setVisible(true);
 				VentanaPrincipal.this.setVisible(false);
@@ -85,7 +86,7 @@ public class VentanaPrincipal extends JFrame {
 		//INICIAR SESION
 		opcionesUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Login a=new Login(VentanaPrincipal.this);
+				Login a=new Login(VentanaPrincipal.this, controller);
 				a.setLocationRelativeTo(VentanaPrincipal.this);
 				a.setVisible(true);
 				VentanaPrincipal.this.setVisible(false);

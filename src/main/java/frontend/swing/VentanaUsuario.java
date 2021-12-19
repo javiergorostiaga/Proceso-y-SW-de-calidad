@@ -3,6 +3,7 @@ package frontend.swing;
 import backend.objects.Pelicula;
 import backend.objects.personas.Persona;
 import backend.objects.personas.Usuario;
+import frontend.controller.Controller;
 
 import javax.swing.JFrame;
 import java.util.HashMap;
@@ -19,7 +20,7 @@ public class VentanaUsuario extends JFrame
 
     }
 
-    public VentanaUsuario(Persona usuarioo, Login login) {
+    public VentanaUsuario(Persona usuarioo, Login login, Controller controller) {
         setResizable(false);
         ventanaAnterior = login;
         principal = login.getVentanaAnterior();

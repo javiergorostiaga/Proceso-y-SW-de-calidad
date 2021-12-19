@@ -29,7 +29,7 @@ public class Principal
         HashMap<String, Pelicula> hmPeliculas = controller.selectPeliculass();
         HashMap<String, Persona> hmUsuarios = controller.selectUsuarioss();
 
-        VentanaPrincipal a = new VentanaPrincipal(hmPeliculas, hmUsuarios);
+        VentanaPrincipal a = new VentanaPrincipal(controller, hmPeliculas, hmUsuarios);
         a.setLocationRelativeTo(null);//para que aparezca en el medio
         a.setVisible(true);
     }

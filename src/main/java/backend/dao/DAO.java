@@ -84,7 +84,7 @@ public class DAO implements IDao
     }
 
     @Override
-    public void insertUsuario(Usuario usuario ) {
+    public void insertUsuario(Usuario usuario) {
         try
         {
             this.transaction.begin();
@@ -93,10 +93,8 @@ public class DAO implements IDao
                     new Usuario(
 
                             usuario.getNombreUsuario(),
-                            usuario.getNombreReal(),
-                            usuario.getPassword()
-
-
+                            usuario.getPassword(),
+                            usuario.getNombreReal()
                     ));
             //}
             this.transaction.commit();
