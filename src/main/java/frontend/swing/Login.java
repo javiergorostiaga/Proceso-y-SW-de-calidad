@@ -4,12 +4,10 @@ import javax.swing.JFrame;
 
 import javax.swing.JPanel;
 
-import backend.objects.Pelicula;
 import backend.objects.personas.Administrador;
 import backend.objects.personas.Persona;
-import backend.objects.personas.Usuario;
 import frontend.controller.Controller;
-import frontend.swing.*;
+
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -24,8 +22,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.HashMap;
 import java.awt.event.ActionEvent;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.border.MatteBorder;
 
 
@@ -50,7 +46,7 @@ public class Login extends JFrame{
 	}
 
 	public Login() throws HeadlessException {
-		super();//lo uso para hacer el test con JUnit para no tener que pasar ning�n par�metro.
+		super();//lo uso para hacer el test con JUnit para no tener que pasar ningun parametro.
 	}
 
 
@@ -126,7 +122,7 @@ public class Login extends JFrame{
 						}
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(Login.this, e1.getMessage());//en vez de "No existe usuario" puedes poner e1.getMessage() para que te de el mensaje de la excepci�n
+					JOptionPane.showMessageDialog(Login.this, e1.getMessage());
 				}
 			}
 		});
@@ -149,7 +145,7 @@ public class Login extends JFrame{
 	}
 
 
-	public boolean comprobarUsuario(String usuario, String contrasenya, HashMap <String,Persona> hashPeliculas) throws Exception {//hay que avisar que este m�todo lanza excepciones
+	public boolean comprobarUsuario(String usuario, String contrasenya, HashMap <String,Persona> hashPeliculas) throws Exception {
 		if(!hashPeliculas.containsKey(usuario))
 		{
 			throw new Exception("Usuario no existente");
@@ -169,7 +165,7 @@ public class Login extends JFrame{
 
 	public void informacion(String usuario)
 	{
-		if(hashUsuarios.get(usuario) instanceof Administrador || usuario.equals("admin"))//si es administrador le mando al menu de administradores de Univook
+		if(hashUsuarios.get(usuario) instanceof Administrador || usuario.equals("admin"))
 		{
 			VentanaAdministrador a = new VentanaAdministrador(Login.this, (hashUsuarios.get(usuario)), controller);
 			a.setLocationRelativeTo(Login.this);
@@ -178,7 +174,7 @@ public class Login extends JFrame{
 		}
 		else 
 		{
-			VentanaUsuario a = new VentanaUsuario((hashUsuarios.get(usuario)),Login.this, controller);
+			VentanaUsuario a = new VentanaUsuario(hashUsuarios.get(usuario).getNombreUsuario(),Login.this);
 			a.setLocationRelativeTo(Login.this);
 			a.setVisible(true);
 			Login.this.setVisible(false);

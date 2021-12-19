@@ -98,20 +98,12 @@ public class VentanaAdministrador extends JFrame {
         panel_2.setBackground(Color.WHITE);
         panel_2.setLayout(null);
 
-        // HAY QUE METER UN TEXTFIELD O ALGO ASÍ PARA PODER METER EL NOMBRE DE LA PELÍCULA
-        // Y LUEGO SE CLICA EN EL BOTÓN DE PELICULA AÑADIR
-
         JLabel lblMenuAdministradores = new JLabel("PELICULA A AÑADIR");
         lblMenuAdministradores.setFont(new Font("Arial Black", Font.PLAIN, 13));
         lblMenuAdministradores.setBounds(49, 16, 207, 21);
         panel_2.add(lblMenuAdministradores);
 
-        JScrollPane scrollPane = new JScrollPane(list);
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setBounds(73, 53, 165, 166);
-        panel_2.add(scrollPane);
-
-        btnCerrarSesion.addActionListener(new ActionListener() {
+         btnCerrarSesion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 login.setLocationRelativeTo(VentanaAdministrador.this);
                 login.setVisible(true);

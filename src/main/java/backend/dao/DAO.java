@@ -124,7 +124,6 @@ public class DAO implements IDao
         HashMap<String, Pelicula> peliculas = new HashMap<String, Pelicula>();
         try
         {
-            System.out.println("Llega a DAO (Películas)");
             this.transaction.begin();
 
             Query<Pelicula> peliculaQuery = this.persistentManager.newQuery("SELECT FROM " +Pelicula.class.getName());
@@ -157,7 +156,6 @@ public class DAO implements IDao
         HashMap<String, Persona> usuarios = new HashMap<String, Persona>();
 
         try {
-            System.out.println("Llega a DAO (Usuarios)");
             this.transaction.begin();
 
             Query<Persona> usuarioQuery = this.persistentManager.newQuery("SELECT FROM " +Persona.class.getName());
