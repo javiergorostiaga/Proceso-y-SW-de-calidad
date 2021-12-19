@@ -37,9 +37,10 @@ public class VentanaAdministrador extends JFrame {
         return ventanaAnterior;
     }
 
-    public VentanaAdministrador(Login login, Persona a, Controller controller)
+    public VentanaAdministrador(Login login, Persona a, HashMap<String,Pelicula> hashPeliculass, Controller controller)
     {
         this.controller = controller;
+        this.hashPeliculas = hashPeliculass;
         setResizable(false);
         setTitle("Menu "+a.getNombreUsuario());
         ventanaAnterior=login;
@@ -57,19 +58,9 @@ public class VentanaAdministrador extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setBorder(new MatteBorder(0, 0, 0, 3, (Color) new Color(0, 0, 0)));
-        panel.setBackground(new Color(0, 112, 255));
-        panel.setBounds(0, 0, 220, 246);
+        panel.setBackground(Color.WHITE);
+        panel.setBounds(0, 0, 236, 246);
         contentPane.add(panel);
-
-        JLabel lblBusqueda = new JLabel("Introduce la película que quieres añadir:");
-        lblBusqueda.setFont(new Font("Tahoma", Font.BOLD, 10));
-        lblBusqueda.setBounds(30, 92, 123, 20);
-        panel.add(lblBusqueda);
-
-        textoBusqueda = new JTextField();
-        textoBusqueda.setBounds(30, 80, 150, 35);
-        panel.add(textoBusqueda);
-        textoBusqueda.setColumns(15);
 
         JButton btnAnlisisDatos = new JButton("Añadir Película");
         btnAnlisisDatos.addActionListener(new ActionListener() {
@@ -89,22 +80,32 @@ public class VentanaAdministrador extends JFrame {
         panel.add(btnAnlisisDatos);
 
         JButton btnCerrarSesion = new JButton("Cerrar Sesión");
-        btnCerrarSesion.setBounds(36, 172, 141, 23);
+        btnCerrarSesion.setBounds(36, 30, 141, 23);
         panel.add(btnCerrarSesion);
 
         JPanel panel_2 = new JPanel();
         panel_2.setBounds(220, 0, 271, 246);
         contentPane.add(panel_2);
-        panel_2.setBackground(Color.WHITE);
+        panel.setBackground(new Color(0, 112, 255));
         panel_2.setLayout(null);
 
-        JLabel lblMenuAdministradores = new JLabel("PELICULA A AÑADIR");
+        JLabel lblMenuAdministradores = new JLabel("PELÍCULA A AÑADIR:");
         lblMenuAdministradores.setFont(new Font("Arial Black", Font.PLAIN, 13));
-        lblMenuAdministradores.setBounds(49, 16, 207, 21);
+        lblMenuAdministradores.setBounds(55, 16, 207, 21);
         panel_2.add(lblMenuAdministradores);
+
+        textoBusqueda = new JTextField();
+        textoBusqueda.setBounds(30, 100, 210, 25);
+        panel_2.add(textoBusqueda);
+        textoBusqueda.setColumns(21);
 
          btnCerrarSesion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                try {
+                    hashPeliculas = controller.selectPeliculass();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
                 login.setLocationRelativeTo(VentanaAdministrador.this);
                 login.setVisible(true);
                 VentanaAdministrador.this.dispose();

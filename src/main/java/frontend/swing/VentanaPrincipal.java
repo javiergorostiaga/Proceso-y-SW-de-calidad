@@ -74,7 +74,7 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Registro a=new Registro(VentanaPrincipal.this, controller);
+				Registro a=new Registro(VentanaPrincipal.this, hashPeliculass, controller);
 				a.setLocationRelativeTo(VentanaPrincipal.this);
 				a.setVisible(true);
 				VentanaPrincipal.this.setVisible(false);
@@ -86,7 +86,7 @@ public class VentanaPrincipal extends JFrame {
 		//INICIAR SESION
 		opcionesUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Login a=new Login(VentanaPrincipal.this, controller);
+				Login a=new Login(VentanaPrincipal.this, hashPeliculass, controller);
 				a.setLocationRelativeTo(VentanaPrincipal.this);
 				a.setVisible(true);
 				VentanaPrincipal.this.setVisible(false);

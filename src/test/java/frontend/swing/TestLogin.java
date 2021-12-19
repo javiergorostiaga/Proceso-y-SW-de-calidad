@@ -1,9 +1,12 @@
 package frontend.swing;
 
 import static org.junit.jupiter.api.Assertions.*;
+import org.databene.contiperf.*;
 
 import java.util.HashMap;
 
+import org.databene.contiperf.junit.ContiPerfRule;
+import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,6 +24,9 @@ class TestLogin {
 	private static Usuario user2;
 	private static Administrador admin;
 
+	@Rule
+	public ContiPerfRule i = new ContiPerfRule();
+
 	@BeforeEach
 	void setUp() throws Exception {
 		a =new Login();
@@ -36,6 +42,8 @@ class TestLogin {
 
 
 	@Test
+	@PerfTest(invocations = 500, threads = 15)
+	@Required(max = 1500, average = 200)
 	void testExpectedException() {
 		
 		String usuarioReal="l_asier_ra";

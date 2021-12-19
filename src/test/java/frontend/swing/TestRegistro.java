@@ -8,6 +8,10 @@ import backend.objects.personas.Administrador;
 import backend.objects.personas.Persona;
 import backend.objects.personas.Usuario;
 import frontend.swing.Registro;
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.Required;
+import org.databene.contiperf.junit.ContiPerfRule;
+import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,6 +26,8 @@ class TestRegistro {
 	private static Administrador admin;
 	private static String username;
 
+	@Rule
+	public ContiPerfRule i = new ContiPerfRule();
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -37,6 +43,8 @@ class TestRegistro {
 	}
 
 	@Test
+	@PerfTest(invocations = 500, threads = 15)
+	@Required(max = 1500, average = 200)
 	void comprobarUsuario() {
 		username="aitorz99";
 		

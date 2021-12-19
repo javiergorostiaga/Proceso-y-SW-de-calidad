@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 import javax.swing.JPanel;
 
+import backend.objects.Pelicula;
 import backend.objects.personas.Administrador;
 import backend.objects.personas.Persona;
 import frontend.controller.Controller;
@@ -38,6 +39,7 @@ public class Login extends JFrame{
 	private JPanel panel;
 	private JLabel lblNewLabel;
 	private HashMap <String, Persona> hashUsuarios;
+	private HashMap<String, Pelicula> hashPeliculas;
 	private VentanaPrincipal ventanaAnterior ;
 	private Controller controller;
 
@@ -50,10 +52,10 @@ public class Login extends JFrame{
 	}
 
 
-	public Login(VentanaPrincipal principal, Controller controller)
+	public Login(VentanaPrincipal principal, HashMap<String,Pelicula> hashPeliculass, Controller controller)
 	{
 		this.controller = controller;
-
+		this.hashPeliculas = hashPeliculass;
 		setResizable(false);
 		ventanaAnterior = principal;
 		setTitle("Login");
@@ -167,7 +169,8 @@ public class Login extends JFrame{
 	{
 		if(hashUsuarios.get(usuario) instanceof Administrador || usuario.equals("admin"))
 		{
-			VentanaAdministrador a = new VentanaAdministrador(Login.this, (hashUsuarios.get(usuario)), controller);
+			VentanaAdministrador a = new VentanaAdministrador(
+					Login.this, (hashUsuarios.get(usuario)), hashPeliculas, controller);
 			a.setLocationRelativeTo(Login.this);
 			a.setVisible(true);
 			Login.this.setVisible(false);

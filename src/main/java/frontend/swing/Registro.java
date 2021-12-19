@@ -48,7 +48,7 @@ public class Registro extends JFrame {
 		passwordField = new JPasswordField();
 	}
 
-	public Registro(VentanaPrincipal ventanaPrincipal, Controller controller) {
+	public Registro(VentanaPrincipal ventanaPrincipal, HashMap<String,Pelicula> hashPeliculass, Controller controller) {
 		this.controller = controller;
 
 		setResizable(false);

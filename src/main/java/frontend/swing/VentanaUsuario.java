@@ -102,13 +102,13 @@ public class VentanaUsuario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(!textPaneEscribir.getText().isEmpty())
 				{
-					String pelicula=textPaneEscribir.getText();//en el hashMap el String entrada irá con saltos de línea... pero en el fichero no.
+					String pelicula=textPaneEscribir.getText();
 					int msg=JOptionPane.showConfirmDialog(VentanaUsuario.this, "¿Buscar Película?","Confirmar",JOptionPane.YES_NO_CANCEL_OPTION);
 
 					if(msg==JOptionPane.YES_OPTION)
 					{
 						cargarTexto(pelicula);
-						textPaneEscribir.setText("");//después de guardar se deja todo vacío por si quiere escribir otro mensaje
+						textPaneEscribir.setText("");
 
 					}
 				}
@@ -140,7 +140,7 @@ public class VentanaUsuario extends JFrame {
 		String texto = "";
 		Iterator<String> it1 = hashPelic.keySet().iterator();
 		HashMap<String, String[]> valores = new HashMap<>();
-		valoresOrdenar = new ArrayList<>();//se meter todos los idMensajes de la conversación y se ordenan para saber cual fue enviado antes
+		valoresOrdenar = new ArrayList<>();
 		boolean existe = false;
 		while (it1.hasNext()) {
 			String idPelic = it1.next();//ID
