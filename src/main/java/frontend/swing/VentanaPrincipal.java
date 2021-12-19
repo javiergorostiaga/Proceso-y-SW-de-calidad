@@ -65,12 +65,10 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel label = new JLabel("New label");
+		JLabel label = new JLabel();
 		label.setBounds(0, 0, 244, 370);
 		panel.add(label);
-		//NO FUNCIONA LA FOTO POR AHORA
-		//label.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/imagenes/fondo.jpg")));
-		
+
 		//---------------------REGISTRO---------------------
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.addActionListener(new ActionListener() {

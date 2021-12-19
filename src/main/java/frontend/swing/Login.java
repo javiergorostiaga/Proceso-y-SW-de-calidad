@@ -106,11 +106,7 @@ public class Login extends JFrame{
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		lblNewLabel = new JLabel("New label");
-
-		//NO FUNCIONA LA FOTO POR AHORA
-		//lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/imagenes/loginFoto.png")));
-
+		lblNewLabel = new JLabel();
 		lblNewLabel.setBounds(22, 62, 128, 130);
 		panel.add(lblNewLabel);
 		
