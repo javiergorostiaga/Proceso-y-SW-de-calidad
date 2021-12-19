@@ -91,7 +91,6 @@ public class DAO implements IDao
 
             this.persistentManager.makePersistent(
                     new Usuario(
-
                             usuario.getNombreUsuario(),
                             usuario.getPassword(),
                             usuario.getNombreReal()

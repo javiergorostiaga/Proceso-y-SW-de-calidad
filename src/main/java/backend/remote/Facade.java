@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Properties;
 
 import backend.app_service.AppService;
+import backend.dao.IDao;
 import backend.objects.Pelicula;
 import backend.objects.personas.Persona;
 import backend.objects.personas.Usuario;
@@ -21,6 +22,7 @@ public class Facade extends UnicastRemoteObject implements IFacade {
     private AppService app_service;
     private static Registry registry;
     private DAO dao;
+    private IDao iDao;
 
     public Facade() throws RemoteException
     {
@@ -29,9 +31,9 @@ public class Facade extends UnicastRemoteObject implements IFacade {
     }
 
     @Override
-    public boolean exportPeliculas() throws Exception {
+    public boolean exportPeliculas(String pelicula) throws Exception {
         System.out.println("* Received exportData() call from Client");
-        if (app_service.exportPeliculas()) //luego meteremos and si hay que hacer mas exports
+        if (app_service.exportPeliculas(pelicula)) //luego meteremos and si hay que hacer mas exports
         {
             return true;
         }
@@ -54,7 +56,6 @@ public class Facade extends UnicastRemoteObject implements IFacade {
         }
     }
 
-
     @Override
     public HashMap<String, Pelicula> selectPeliculas() throws Exception {
         System.out.println("* Received selectPeliculas() call from Client");
@@ -66,7 +67,7 @@ public class Facade extends UnicastRemoteObject implements IFacade {
 
     @Override
     public HashMap<String, Persona> selectUsuarios() throws Exception {
-        System.out.println("* Received selectUsuarioa() call from Client");
+        System.out.println("* Received selectUsuarios() call from Client");
         //
         System.out.println("Usuarios funcionan");
         return app_service.selectUsuarios();
@@ -90,6 +91,7 @@ public class Facade extends UnicastRemoteObject implements IFacade {
             System.err.println("- Exception running the server: " + e.getMessage());
             e.printStackTrace();
         }
+
         Thread.sleep(Integer.MAX_VALUE);
     }
 

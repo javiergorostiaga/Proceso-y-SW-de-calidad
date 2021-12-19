@@ -26,17 +26,17 @@ public class Controller
         Principal.selectPelicula(this);
     }
 
-    public boolean exportPeliculas() throws Exception
-    {
-        return serviceLocator.getService().exportPeliculas();
-    }
-
     public HashMap<String, Pelicula> selectPeliculass() throws Exception
     {
         HashMap<String, Pelicula> hmPeliculaController = new HashMap<String, Pelicula>();
         hmPeliculaController =serviceLocator.getService().selectPeliculas();
         // DA ERROR LA ANTERIOR LÍNEA, PERO NO POR EL DAO (LO HE PROBADO)
         return hmPeliculaController;
+    }
+
+    public boolean exportPelicula(String pelicula) throws Exception
+    {
+        return serviceLocator.getService().exportPeliculas(pelicula);
     }
 
     public HashMap<String, Persona> selectUsuarioss() throws Exception
@@ -46,14 +46,14 @@ public class Controller
         return hmUsuarioController;
     }
 
-    public void exit()
-    {
-        System.exit(0);
-    }
-
     public  boolean exportUsuario(Usuario usuario) throws Exception
     {
         return serviceLocator.getService().exportUsuarios(usuario);
+    }
+
+    public void exit()
+    {
+        System.exit(0);
     }
 
     public static void main(String[] args) throws Exception

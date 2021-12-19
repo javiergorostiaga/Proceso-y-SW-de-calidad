@@ -13,9 +13,9 @@ import java.util.HashMap;
 
 public class Principal
 {
-    public static boolean exportData(final Controller controller) throws Exception
+    public static boolean exportData(final Controller controller, String pelicula) throws Exception
     {
-        return controller.exportPeliculas(); //lo que hace que se metan las peliculas por ahora
+        return controller.exportPelicula(pelicula); //lo que hace que se metan las peliculas por ahora
     }
 
     public static boolean exportUsuario(final Controller controller, Usuario usuario) throws Exception

@@ -171,7 +171,7 @@ public class Login extends JFrame{
 	{
 		if(hashUsuarios.get(usuario) instanceof Administrador || usuario.equals("admin"))//si es administrador le mando al menu de administradores de Univook
 		{
-			VentanaAdministrador a = new VentanaAdministrador(Login.this, (hashUsuarios.get(usuario)));
+			VentanaAdministrador a = new VentanaAdministrador(Login.this, (hashUsuarios.get(usuario)), controller);
 			a.setLocationRelativeTo(Login.this);
 			a.setVisible(true);
 			Login.this.setVisible(false);

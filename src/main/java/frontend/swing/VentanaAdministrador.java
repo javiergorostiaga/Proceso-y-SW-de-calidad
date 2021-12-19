@@ -3,16 +3,13 @@ package frontend.swing;
 import backend.objects.Pelicula;
 import backend.objects.personas.Administrador;
 import backend.objects.personas.Persona;
+import frontend.controller.Controller;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.border.MatteBorder;
 
 import java.awt.Color;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -21,32 +18,28 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 import java.awt.event.ActionEvent;
-import javax.swing.DefaultListModel;
 
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 
 
 public class VentanaAdministrador extends JFrame {
 
     private JPanel contentPane;
-    //private HashMap <String, Persona> hashUsuarios;
+    private JTextField textoBusqueda;
     private HashMap<String, Pelicula> hashPeliculas;
     private JList <String> list;
     private Persona a;
     private Login ventanaAnterior;
     private VentanaPrincipal principal;
-
+    private Controller controller;
 
     public Login getVentanaAnterior() {
         return ventanaAnterior;
     }
 
-
-    public VentanaAdministrador(Login login, Persona a)
+    public VentanaAdministrador(Login login, Persona a, Controller controller)
     {
+        this.controller = controller;
         setResizable(false);
         setTitle("Menu "+a.getNombreUsuario());
         ventanaAnterior=login;
@@ -68,21 +61,36 @@ public class VentanaAdministrador extends JFrame {
         panel.setBounds(0, 0, 220, 246);
         contentPane.add(panel);
 
+        JLabel lblBusqueda = new JLabel("Introduce la película que quieres añadir:");
+        lblBusqueda.setFont(new Font("Tahoma", Font.BOLD, 10));
+        lblBusqueda.setBounds(30, 92, 123, 20);
+        panel.add(lblBusqueda);
 
-        JButton btnCerrarSesion = new JButton("Cerrar Sesion");
-        btnCerrarSesion.setBounds(36, 172, 141, 23);
-        panel.add(btnCerrarSesion);
+        textoBusqueda = new JTextField();
+        textoBusqueda.setBounds(30, 80, 150, 35);
+        panel.add(textoBusqueda);
+        textoBusqueda.setColumns(15);
 
         JButton btnAnlisisDatos = new JButton("Añadir Película");
         btnAnlisisDatos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                //LÓGICA RELACIONADA CON AÑADIR PELÍCULA
-
+                try {
+                    Principal.exportData(controller, textoBusqueda.getText());
+                    System.out.println("¡Película insertada!");
+                    JOptionPane.showMessageDialog(null, "Se ha introducido la película en la BBDD.");
+                }
+                catch (Exception e1){
+                    JOptionPane.showMessageDialog(VentanaAdministrador.this, e1.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         btnAnlisisDatos.setBounds(36, 118, 141, 23);
         panel.add(btnAnlisisDatos);
+
+        JButton btnCerrarSesion = new JButton("Cerrar Sesión");
+        btnCerrarSesion.setBounds(36, 172, 141, 23);
+        panel.add(btnCerrarSesion);
 
         JPanel panel_2 = new JPanel();
         panel_2.setBounds(220, 0, 271, 246);

@@ -11,10 +11,10 @@ import java.util.HashMap;
 
 public interface IFacade extends Remote
 {
-    boolean exportPeliculas() throws Exception;
+    boolean exportPeliculas(String pelicula) throws Exception;
     HashMap<String, Pelicula> selectPeliculas() throws  Exception;
 
     HashMap<String, Persona> selectUsuarios() throws Exception;
-   boolean exportUsuarios(Usuario usuario) throws Exception;
+    boolean exportUsuarios(Usuario usuario) throws Exception;
 
 }
