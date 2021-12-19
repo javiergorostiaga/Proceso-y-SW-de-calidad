@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import backend.objects.personas.Administrador;
 import backend.objects.personas.Persona;
 import backend.objects.personas.Usuario;
+import org.mockito.Mock;
 
 
 class TestLogin {
@@ -84,6 +85,23 @@ class TestLogin {
 	void testExpectedException2() throws Exception{
 		assertTrue(a.comprobarUsuario("l_asier_ra", "passAsier", hashUsuarios));
 		assertTrue(a.comprobarUsuario("ADMIN", "passAdmin", hashUsuarios));
+	}
+
+	@Mock
+	private Usuario userMock;
+
+	@Test
+	void testMockExpectedException1(){
+
+		Assertions.assertThrows(NullPointerException.class, () ->
+		{
+			a.comprobarUsuario(userMock.getNombreUsuario(), userMock.getPassword(), null);
+		});
+
+		Assertions.assertThrows(NullPointerException.class, () ->
+		{
+			a.comprobarUsuario(null, null, null);
+		});
 	}
 	
 }
