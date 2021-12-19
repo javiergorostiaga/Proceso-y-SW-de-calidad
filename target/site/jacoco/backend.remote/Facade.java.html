@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Facade.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Proceso-y-SW-de-calidad</a> &gt; <a href="index.source.html" class="el_package">backend.remote</a> &gt; <span class="el_source">Facade.java</span></div><h1>Facade.java</h1><pre class="source lang-java linenums">package backend.remote;
+
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Properties;
+
+import backend.app_service.AppService;
+import backend.objects.Pelicula;
+import backend.objects.personas.Persona;
+import backend.objects.personas.Usuario;
+import common.remote.IFacade;
+import common.properties.PropertyManager;
+import common.properties.AppPropertyManager;
+import backend.dao.DAO;
+
+public class Facade extends UnicastRemoteObject implements IFacade {
+    private AppService app_service;
+    private static Registry registry;
+    private DAO dao;
+
+    public Facade() throws RemoteException
+<span class="nc" id="L26">    {</span>
+<span class="nc" id="L27">        this.app_service = new AppService();</span>
+        //this.dao = new DAO();
+<span class="nc" id="L29">    }</span>
+
+    @Override
+    public boolean exportPeliculas() throws Exception {
+<span class="nc" id="L33">        System.out.println(&quot;* Received exportData() call from Client&quot;);</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        if (app_service.exportPeliculas()) //luego meteremos and si hay que hacer mas exports</span>
+        {
+<span class="nc" id="L36">            return true;</span>
+        }
+        else
+        {
+<span class="nc" id="L40">            return false;</span>
+        }
+    }
+
+    @Override
+    public boolean exportUsuarios(Usuario usuario) throws Exception {
+<span class="nc" id="L46">        System.out.println(&quot;* Received exportData() call from Client&quot;);</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if (app_service.exportUsuarios(usuario)) //luego meteremos and si hay que hacer mas exports</span>
+        {
+<span class="nc" id="L49">            return true;</span>
+        }
+        else
+        {
+<span class="nc" id="L53">            return false;</span>
+        }
+    }
+
+
+    @Override
+    public HashMap&lt;String, Pelicula&gt; selectPeliculas() throws Exception {
+<span class="nc" id="L60">        System.out.println(&quot;* Received selectPeliculas() call from Client&quot;);</span>
+        // ArrayList&lt;Pelicula&gt; arrayPeliculaFacade=dao.selectPeliculas();
+        //System.out.println(&quot;Array Facade: &quot;+arrayPeliculaFacade.get(0).getActors());
+<span class="nc" id="L63">        System.out.println(&quot;Pelis funcionan&quot;);</span>
+<span class="nc" id="L64">        return app_service.selectPeliculas();// -----------------</span>
+    }
+
+    @Override
+    public HashMap&lt;String, Persona&gt; selectUsuarios() throws Exception {
+<span class="nc" id="L69">        System.out.println(&quot;* Received selectUsuarioa() call from Client&quot;);</span>
+        //
+<span class="nc" id="L71">        System.out.println(&quot;Usuarios funcionan&quot;);</span>
+<span class="nc" id="L72">        return app_service.selectUsuarios();</span>
+    }
+
+    public static void main(String[] args) throws Exception
+    {
+<span class="nc" id="L77">        PropertyManager apm = new AppPropertyManager();</span>
+<span class="nc" id="L78">        Properties p = apm.getProperties();</span>
+
+<span class="nc" id="L80">        String name = &quot;//&quot; + p.getProperty(&quot;ip&quot;) + &quot;:&quot; + p.getProperty(&quot;port&quot;) + &quot;/&quot; + p.getProperty(&quot;serviceName&quot;);</span>
+<span class="nc" id="L81">        System.setProperty(&quot;java.rmi.server.CodeBase&quot;, name);</span>
+<span class="nc" id="L82">        System.setProperty(&quot;java.security.policy&quot;, &quot;resources/java.policy&quot;);</span>
+
+        try {
+<span class="nc" id="L85">            IFacade server = new Facade();</span>
+<span class="nc" id="L86">            registry = LocateRegistry.createRegistry((Integer.valueOf(p.getProperty(&quot;port&quot;))));</span>
+<span class="nc" id="L87">            registry.rebind(name, server);</span>
+<span class="nc" id="L88">            System.out.println(&quot;* Server '&quot; + name + &quot;' active and waiting...&quot;);</span>
+<span class="nc" id="L89">        } catch (Exception e) {</span>
+<span class="nc" id="L90">            System.err.println(&quot;- Exception running the server: &quot; + e.getMessage());</span>
+<span class="nc" id="L91">            e.printStackTrace();</span>
+<span class="nc" id="L92">        }</span>
+<span class="nc" id="L93">        Thread.sleep(Integer.MAX_VALUE);</span>
+<span class="nc" id="L94">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

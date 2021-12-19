@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VentanaAdministrador.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Proceso-y-SW-de-calidad</a> &gt; <a href="index.source.html" class="el_package">frontend.swing</a> &gt; <span class="el_source">VentanaAdministrador.java</span></div><h1>VentanaAdministrador.java</h1><pre class="source lang-java linenums">package frontend.swing;
+
+import backend.objects.Pelicula;
+import backend.objects.personas.Administrador;
+import backend.objects.personas.Persona;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.border.MatteBorder;
+
+import java.awt.Color;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import java.awt.event.ActionEvent;
+import javax.swing.DefaultListModel;
+
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+
+
+public class VentanaAdministrador extends JFrame {
+
+    private JPanel contentPane;
+    //private HashMap &lt;String, Persona&gt; hashUsuarios;
+    private HashMap&lt;String, Pelicula&gt; hashPeliculas;
+    private JList &lt;String&gt; list;
+    private Persona a;
+    private Login ventanaAnterior;
+    private VentanaPrincipal principal;
+
+
+    public Login getVentanaAnterior() {
+<span class="nc" id="L44">        return ventanaAnterior;</span>
+    }
+
+
+    public VentanaAdministrador(Login login, Persona a)
+<span class="nc" id="L49">    {</span>
+<span class="nc" id="L50">        setResizable(false);</span>
+<span class="nc" id="L51">        setTitle(&quot;Menu &quot;+a.getNombreUsuario());</span>
+<span class="nc" id="L52">        ventanaAnterior=login;</span>
+<span class="nc" id="L53">        this.a=a;</span>
+<span class="nc" id="L54">        principal=login.getVentanaAnterior();</span>
+<span class="nc" id="L55">        this.hashPeliculas=principal.getHashPeliculas();</span>
+        //this.hashUsuarios=principal.getHashUsuarios();
+
+<span class="nc" id="L58">        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);</span>
+<span class="nc" id="L59">        setBounds(100, 100, 492, 283);</span>
+<span class="nc" id="L60">        contentPane = new JPanel();</span>
+<span class="nc" id="L61">        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));</span>
+<span class="nc" id="L62">        setContentPane(contentPane);</span>
+<span class="nc" id="L63">        contentPane.setLayout(null);</span>
+
+<span class="nc" id="L65">        JPanel panel = new JPanel();</span>
+<span class="nc" id="L66">        panel.setBorder(new MatteBorder(0, 0, 0, 3, (Color) new Color(0, 0, 0)));</span>
+<span class="nc" id="L67">        panel.setBackground(new Color(0, 112, 255));</span>
+<span class="nc" id="L68">        panel.setBounds(0, 0, 220, 246);</span>
+<span class="nc" id="L69">        contentPane.add(panel);</span>
+
+
+<span class="nc" id="L72">        JButton btnCerrarSesion = new JButton(&quot;Cerrar Sesion&quot;);</span>
+<span class="nc" id="L73">        btnCerrarSesion.setBounds(36, 172, 141, 23);</span>
+<span class="nc" id="L74">        panel.add(btnCerrarSesion);</span>
+
+<span class="nc" id="L76">        JButton btnAnlisisDatos = new JButton(&quot;Añadir Película&quot;);</span>
+<span class="nc" id="L77">        btnAnlisisDatos.addActionListener(new ActionListener() {</span>
+            public void actionPerformed(ActionEvent e) {
+
+                //LÓGICA RELACIONADA CON AÑADIR PELÍCULA
+
+<span class="nc" id="L82">            }</span>
+        });
+<span class="nc" id="L84">        btnAnlisisDatos.setBounds(36, 118, 141, 23);</span>
+<span class="nc" id="L85">        panel.add(btnAnlisisDatos);</span>
+
+<span class="nc" id="L87">        JPanel panel_2 = new JPanel();</span>
+<span class="nc" id="L88">        panel_2.setBounds(220, 0, 271, 246);</span>
+<span class="nc" id="L89">        contentPane.add(panel_2);</span>
+<span class="nc" id="L90">        panel_2.setBackground(Color.WHITE);</span>
+<span class="nc" id="L91">        panel_2.setLayout(null);</span>
+
+        // HAY QUE METER UN TEXTFIELD O ALGO ASÍ PARA PODER METER EL NOMBRE DE LA PELÍCULA
+        // Y LUEGO SE CLICA EN EL BOTÓN DE PELICULA AÑADIR
+
+<span class="nc" id="L96">        JLabel lblMenuAdministradores = new JLabel(&quot;PELICULA A AÑADIR&quot;);</span>
+<span class="nc" id="L97">        lblMenuAdministradores.setFont(new Font(&quot;Arial Black&quot;, Font.PLAIN, 13));</span>
+<span class="nc" id="L98">        lblMenuAdministradores.setBounds(49, 16, 207, 21);</span>
+<span class="nc" id="L99">        panel_2.add(lblMenuAdministradores);</span>
+
+<span class="nc" id="L101">        JScrollPane scrollPane = new JScrollPane(list);</span>
+<span class="nc" id="L102">        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);</span>
+<span class="nc" id="L103">        scrollPane.setBounds(73, 53, 165, 166);</span>
+<span class="nc" id="L104">        panel_2.add(scrollPane);</span>
+
+<span class="nc" id="L106">        btnCerrarSesion.addActionListener(new ActionListener() {</span>
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L108">                login.setLocationRelativeTo(VentanaAdministrador.this);</span>
+<span class="nc" id="L109">                login.setVisible(true);</span>
+<span class="nc" id="L110">                VentanaAdministrador.this.dispose();</span>
+<span class="nc" id="L111">            }</span>
+        });
+<span class="nc" id="L113">        VentanaAdministrador.this.addWindowListener(new WindowAdapter() {//lo que hace al dar a la X</span>
+            public void windowClosing(WindowEvent evt) {
+<span class="nc" id="L115">                int respuesta = JOptionPane.showOptionDialog(VentanaAdministrador.this, &quot;¿Estás seguro de salir?&quot;,&quot;Confirmar&quot;, JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, null, null);</span>
+<span class="nc bnc" id="L116" title="All 2 branches missed.">                if (respuesta == 0)</span>
+                {
+<span class="nc" id="L118">                    System.exit(0);//para que se cierre</span>
+                }
+<span class="nc" id="L120">            }</span>
+        });
+<span class="nc" id="L122">    }</span>
+
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Login.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Proceso-y-SW-de-calidad</a> &gt; <a href="index.source.html" class="el_package">frontend.swing</a> &gt; <span class="el_source">Login.java</span></div><h1>Login.java</h1><pre class="source lang-java linenums">package frontend.swing;
+
+import javax.swing.JFrame;
+
+import javax.swing.JPanel;
+
+import backend.objects.Pelicula;
+import backend.objects.personas.Administrador;
+import backend.objects.personas.Persona;
+import backend.objects.personas.Usuario;
+import frontend.swing.*;
+import java.awt.Color;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import java.awt.Font;
+import java.awt.HeadlessException;
+
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.HashMap;
+import java.awt.event.ActionEvent;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.border.MatteBorder;
+
+
+public class Login extends JFrame{
+
+	private JPanel contentPane;
+	private JTextField textUsuario;
+	private JPasswordField passUsuario;
+	private JLabel lblUsuario;
+	private JLabel lblContrasea;
+	private JButton btnOk;
+	private JButton btnCancel;
+	private JLabel lblBienvenido;
+	private JPanel panel;
+	private JLabel lblNewLabel;
+	private HashMap &lt;String, Persona&gt; hashUsuarios;
+	private VentanaPrincipal ventanaAnterior ;
+
+	public VentanaPrincipal getVentanaAnterior() {
+<span class="nc" id="L47">		return ventanaAnterior;</span>
+	}
+
+	public Login() throws HeadlessException {
+<span class="nc" id="L51">		super();//lo uso para hacer el test con JUnit para no tener que pasar ning�n par�metro.</span>
+<span class="nc" id="L52">	}</span>
+
+
+	public Login(VentanaPrincipal principal)
+<span class="nc" id="L56">	{</span>
+<span class="nc" id="L57">		setResizable(false);</span>
+<span class="nc" id="L58">		ventanaAnterior = principal;</span>
+<span class="nc" id="L59">		setTitle(&quot;Login&quot;);</span>
+<span class="nc" id="L60">		this.hashUsuarios=principal.getHashUsuarios();</span>
+		
+<span class="nc" id="L62">		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);</span>
+<span class="nc" id="L63">		setBounds(100, 100, 481, 307);</span>
+<span class="nc" id="L64">		contentPane = new JPanel();</span>
+<span class="nc" id="L65">		contentPane.setBackground(Color.WHITE);</span>
+<span class="nc" id="L66">		contentPane.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));</span>
+<span class="nc" id="L67">		setContentPane(contentPane);</span>
+<span class="nc" id="L68">		contentPane.setLayout(null);</span>
+		
+<span class="nc" id="L70">		textUsuario = new JTextField();</span>
+<span class="nc" id="L71">		textUsuario.setBounds(219, 58, 198, 26);</span>
+<span class="nc" id="L72">		contentPane.add(textUsuario);</span>
+<span class="nc" id="L73">		textUsuario.setColumns(10);</span>
+		
+<span class="nc" id="L75">		lblUsuario = new JLabel(&quot;USUARIO&quot;);</span>
+<span class="nc" id="L76">		lblUsuario.setFont(new Font(&quot;Tahoma&quot;, Font.PLAIN, 14));</span>
+<span class="nc" id="L77">		lblUsuario.setBounds(219, 34, 65, 14);</span>
+<span class="nc" id="L78">		contentPane.add(lblUsuario);</span>
+		
+<span class="nc" id="L80">		passUsuario = new JPasswordField();</span>
+<span class="nc" id="L81">		passUsuario.setBounds(219, 126, 198, 26);</span>
+<span class="nc" id="L82">		contentPane.add(passUsuario);</span>
+		
+<span class="nc" id="L84">		lblContrasea = new JLabel(&quot;CONTRASE\u00D1A&quot;);</span>
+<span class="nc" id="L85">		lblContrasea.setFont(new Font(&quot;Tahoma&quot;, Font.PLAIN, 14));</span>
+<span class="nc" id="L86">		lblContrasea.setBounds(219, 101, 95, 14);</span>
+<span class="nc" id="L87">		contentPane.add(lblContrasea);</span>
+		
+<span class="nc" id="L89">		btnOk = new JButton(&quot;OK&quot;);</span>
+<span class="nc" id="L90">		btnOk.setBounds(219, 181, 89, 23);</span>
+<span class="nc" id="L91">		contentPane.add(btnOk);</span>
+		
+<span class="nc" id="L93">		btnCancel = new JButton(&quot;Cancel&quot;);</span>
+<span class="nc" id="L94">		btnCancel.setBounds(328, 181, 89, 23);</span>
+<span class="nc" id="L95">		contentPane.add(btnCancel);</span>
+		
+<span class="nc" id="L97">		lblBienvenido = new JLabel(&quot;Login Necesario&quot;);</span>
+<span class="nc" id="L98">		lblBienvenido.setFont(new Font(&quot;Tahoma&quot;, Font.PLAIN, 14));</span>
+<span class="nc" id="L99">		lblBienvenido.setBounds(246, 205, 198, 30);</span>
+<span class="nc" id="L100">		contentPane.add(lblBienvenido);</span>
+		
+<span class="nc" id="L102">		panel = new JPanel();</span>
+<span class="nc" id="L103">		panel.setBorder(new MatteBorder(0, 0, 0, 4, (Color) new Color(0, 0, 0)));</span>
+<span class="nc" id="L104">		panel.setBackground(new Color(0, 102, 255));</span>
+<span class="nc" id="L105">		panel.setBounds(0, 0, 176, 268);</span>
+<span class="nc" id="L106">		contentPane.add(panel);</span>
+<span class="nc" id="L107">		panel.setLayout(null);</span>
+		
+<span class="nc" id="L109">		lblNewLabel = new JLabel();</span>
+<span class="nc" id="L110">		lblNewLabel.setBounds(22, 62, 128, 130);</span>
+<span class="nc" id="L111">		panel.add(lblNewLabel);</span>
+		
+<span class="nc" id="L113">		btnOk.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent e) {
+				
+<span class="nc" id="L116">				String usuario = textUsuario.getText();</span>
+<span class="nc" id="L117">				String contrasenya=passUsuario.getText();</span>
+				try {
+<span class="nc" id="L119">					boolean encontrado=comprobarUsuario(usuario, contrasenya, hashUsuarios);</span>
+<span class="nc bnc" id="L120" title="All 2 branches missed.">					if(encontrado) {</span>
+<span class="nc" id="L121">						informacion(usuario); // AQUÍ ES DONDE VE SI ES ADMIN O USER</span>
+						}
+				}
+<span class="nc" id="L124">				catch(Exception e1) {</span>
+<span class="nc" id="L125">					JOptionPane.showMessageDialog(Login.this, e1.getMessage());//en vez de &quot;No existe usuario&quot; puedes poner e1.getMessage() para que te de el mensaje de la excepci�n</span>
+<span class="nc" id="L126">				}</span>
+<span class="nc" id="L127">			}</span>
+		});
+<span class="nc" id="L129">		btnCancel.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L131">				principal.setLocationRelativeTo(Login.this);</span>
+<span class="nc" id="L132">				principal.setVisible(true);</span>
+<span class="nc" id="L133">				Login.this.dispose();</span>
+<span class="nc" id="L134">			}</span>
+		});
+<span class="nc" id="L136">		Login.this.addWindowListener(new WindowAdapter() {//lo que hace al dar a la X</span>
+			   public void windowClosing(WindowEvent evt) {
+<span class="nc" id="L138">			        int respuesta = JOptionPane.showOptionDialog(Login.this, &quot;�Est�s seguro de salir?&quot;,&quot;Confirmar&quot;, JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, null, null);</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">			        if (respuesta == 0) </span>
+			        {
+<span class="nc" id="L141">			        	System.exit(0);</span>
+			        }
+<span class="nc" id="L143">			   	}</span>
+			  });
+<span class="nc" id="L145">	}</span>
+
+
+	public boolean comprobarUsuario(String usuario, String contrasenya, HashMap &lt;String,Persona&gt; hashPeliculas) throws Exception {//hay que avisar que este m�todo lanza excepciones
+<span class="nc bnc" id="L149" title="All 2 branches missed.">		if(!hashPeliculas.containsKey(usuario))</span>
+		{
+<span class="nc" id="L151">			throw new Exception(&quot;Usuario no existente&quot;);</span>
+		}
+		else
+		{
+<span class="nc" id="L155">			String passDelHash=hashPeliculas.get(usuario).getPassword();</span>
+<span class="nc bnc" id="L156" title="All 2 branches missed.">			if(passDelHash.equals(contrasenya))</span>
+			{
+<span class="nc" id="L158">				return true;</span>
+			}
+			else
+<span class="nc" id="L161">				throw new Exception(&quot;Clave incorrecta&quot;);</span>
+		}
+	}
+
+
+	public void informacion(String usuario)
+	{
+<span class="nc bnc" id="L168" title="All 4 branches missed.">		if(hashUsuarios.get(usuario) instanceof Administrador || usuario.equals(&quot;admin&quot;))//si es administrador le mando al menu de administradores de Univook</span>
+		{
+<span class="nc" id="L170">			VentanaAdministrador a = new VentanaAdministrador(Login.this, (hashUsuarios.get(usuario)));</span>
+<span class="nc" id="L171">			a.setLocationRelativeTo(Login.this);</span>
+<span class="nc" id="L172">			a.setVisible(true);</span>
+<span class="nc" id="L173">			Login.this.setVisible(false);</span>
+<span class="nc" id="L174">		}</span>
+		else 
+		{
+<span class="nc" id="L177">			VentanaUsuario a = new VentanaUsuario((hashUsuarios.get(usuario)),Login.this);</span>
+<span class="nc" id="L178">			a.setLocationRelativeTo(Login.this);</span>
+<span class="nc" id="L179">			a.setVisible(true);</span>
+<span class="nc" id="L180">			Login.this.setVisible(false);</span>
+		}
+<span class="nc" id="L182">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

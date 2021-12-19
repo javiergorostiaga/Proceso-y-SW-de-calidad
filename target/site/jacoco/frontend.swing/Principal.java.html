@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Principal.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Proceso-y-SW-de-calidad</a> &gt; <a href="index.source.html" class="el_package">frontend.swing</a> &gt; <span class="el_source">Principal.java</span></div><h1>Principal.java</h1><pre class="source lang-java linenums">package frontend.swing;
+
+import backend.objects.Pelicula;
+import backend.objects.personas.Persona;
+import backend.objects.personas.Usuario;
+import frontend.controller.Controller;
+import org.checkerframework.checker.units.qual.A;
+
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+<span class="nc" id="L14">public class Principal</span>
+{
+    public static boolean exportData(final Controller controller) throws Exception
+    {
+<span class="nc" id="L18">        return controller.exportPeliculas(); //lo que hace que se metan las peliculas por ahora</span>
+    }
+
+    public static boolean exportUsuario(final Controller controller, Usuario usuario) throws Exception
+    {
+<span class="nc" id="L23">        return controller.exportUsuario(usuario); //lo que hace que se metan las peliculas por ahora</span>
+    }
+
+    public static void selectPelicula(final Controller controller) throws  Exception{
+<span class="nc" id="L27">        System.out.println(&quot;CLASE PRINCIPAL&quot;);</span>
+
+<span class="nc" id="L29">        HashMap&lt;String, Pelicula&gt; hmPeliculas = controller.selectPeliculass();</span>
+<span class="nc" id="L30">        HashMap&lt;String, Persona&gt; hmUsuarios = controller.selectUsuarioss();</span>
+
+<span class="nc" id="L32">        VentanaPrincipal a = new VentanaPrincipal(hmPeliculas, hmUsuarios);</span>
+<span class="nc" id="L33">        a.setLocationRelativeTo(null);//para que aparezca en el medio</span>
+<span class="nc" id="L34">        a.setVisible(true);</span>
+<span class="nc" id="L35">    }</span>
+
+}
+//junit contiperf
+//junit mockito...
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

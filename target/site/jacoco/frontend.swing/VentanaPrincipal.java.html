@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VentanaPrincipal.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Proceso-y-SW-de-calidad</a> &gt; <a href="index.source.html" class="el_package">frontend.swing</a> &gt; <span class="el_source">VentanaPrincipal.java</span></div><h1>VentanaPrincipal.java</h1><pre class="source lang-java linenums">package frontend.swing;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import java.applet.AudioClip;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.ImageIcon;
+import javax.swing.border.MatteBorder;
+
+import backend.objects.Pelicula;
+import backend.objects.personas.Persona;
+import frontend.swing.*;
+
+
+
+public class VentanaPrincipal extends JFrame {
+
+	private JPanel contentPane;
+	private HashMap&lt;String, Pelicula&gt; hashPeliculas;
+	private HashMap&lt;String, Persona&gt; hashUsuarios;
+
+	public VentanaPrincipal(HashMap&lt;String,Pelicula&gt; hashPeliculass, HashMap&lt;String,Persona&gt; hashUsuarioss)
+<span class="nc" id="L38">	{</span>
+<span class="nc" id="L39">		this.hashPeliculas=hashPeliculass;</span>
+<span class="nc" id="L40">		this.hashUsuarios=hashUsuarioss;</span>
+
+<span class="nc" id="L42">		setTitle(&quot;OMDB&quot;);</span>
+<span class="nc" id="L43">		setResizable(false);//para que no se pueda agrandar	</span>
+<span class="nc" id="L44">		VentanaPrincipal.this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);//-------para que no se cierre y defina yo que hacer</span>
+<span class="nc" id="L45">		setBounds(100, 100, 639, 409);</span>
+<span class="nc" id="L46">		contentPane = new JPanel();</span>
+<span class="nc" id="L47">		contentPane.setBorder(new MatteBorder(1, 0, 0, 0, (Color) new Color(0, 0, 0)));</span>
+<span class="nc" id="L48">		contentPane.setBackground(Color.WHITE);</span>
+<span class="nc" id="L49">		setContentPane(contentPane);</span>
+<span class="nc" id="L50">		contentPane.setLayout(null);</span>
+		
+<span class="nc" id="L52">		JLabel lblMenuPrincipal = new JLabel(&quot;\u00A1BIENVENIDO!&quot;);</span>
+<span class="nc" id="L53">		lblMenuPrincipal.setHorizontalAlignment(SwingConstants.CENTER);</span>
+<span class="nc" id="L54">		lblMenuPrincipal.setFont(new Font(&quot;Arial Black&quot;, Font.PLAIN, 20));</span>
+<span class="nc" id="L55">		lblMenuPrincipal.setBounds(271, 49, 168, 37);</span>
+<span class="nc" id="L56">		contentPane.add(lblMenuPrincipal);</span>
+		
+<span class="nc" id="L58">		JButton opcionesUsuarios = new JButton(&quot;Iniciar Sesi\u00F3n&quot;);</span>
+<span class="nc" id="L59">		opcionesUsuarios.setBounds(320, 136, 199, 37);</span>
+<span class="nc" id="L60">		contentPane.add(opcionesUsuarios);</span>
+		
+<span class="nc" id="L62">		JPanel panel = new JPanel();</span>
+<span class="nc" id="L63">		panel.setBackground(Color.DARK_GRAY);</span>
+<span class="nc" id="L64">		panel.setBounds(0, 0, 244, 370);</span>
+<span class="nc" id="L65">		contentPane.add(panel);</span>
+<span class="nc" id="L66">		panel.setLayout(null);</span>
+		
+<span class="nc" id="L68">		JLabel label = new JLabel();</span>
+<span class="nc" id="L69">		label.setBounds(0, 0, 244, 370);</span>
+<span class="nc" id="L70">		panel.add(label);</span>
+
+		//---------------------REGISTRO---------------------
+<span class="nc" id="L73">		JButton btnRegistrarse = new JButton(&quot;Registrarse&quot;);</span>
+<span class="nc" id="L74">		btnRegistrarse.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent arg0) {
+<span class="nc" id="L76">				Registro a=new Registro(VentanaPrincipal.this);</span>
+<span class="nc" id="L77">				a.setLocationRelativeTo(VentanaPrincipal.this);</span>
+<span class="nc" id="L78">				a.setVisible(true);</span>
+<span class="nc" id="L79">				VentanaPrincipal.this.setVisible(false);</span>
+<span class="nc" id="L80">			}</span>
+		});
+<span class="nc" id="L82">		btnRegistrarse.setBounds(320, 216, 199, 37);</span>
+<span class="nc" id="L83">		contentPane.add(btnRegistrarse);</span>
+
+		//INICIAR SESION
+<span class="nc" id="L86">		opcionesUsuarios.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L88">				Login a=new Login(VentanaPrincipal.this);</span>
+<span class="nc" id="L89">				a.setLocationRelativeTo(VentanaPrincipal.this);</span>
+<span class="nc" id="L90">				a.setVisible(true);</span>
+<span class="nc" id="L91">				VentanaPrincipal.this.setVisible(false);</span>
+<span class="nc" id="L92">			}</span>
+		});
+		
+<span class="nc" id="L95">		VentanaPrincipal.this.addWindowListener(new WindowAdapter() {//lo que hace al dar a la X</span>
+			   public void windowClosing(WindowEvent evt) {
+<span class="nc" id="L97">			       int respuesta = JOptionPane.showOptionDialog(VentanaPrincipal.this, &quot;¿Estas seguro de salir?&quot;,&quot;Confirmar&quot;, JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, null, null);</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">			       if (respuesta == 0) </span>
+			       {
+<span class="nc" id="L100">			    	   System.exit(0);</span>
+			       }
+<span class="nc" id="L102">			   }</span>
+		});
+<span class="nc" id="L104">	}</span>
+
+	public HashMap&lt;String, Persona&gt; getHashUsuarios() {
+<span class="nc" id="L107">		return hashUsuarios;</span>
+	}
+
+	public void setHashUsuarios(HashMap&lt;String, Persona&gt; hashUsuarios) {
+<span class="nc" id="L111">		this.hashUsuarios = hashUsuarios;</span>
+<span class="nc" id="L112">	}</span>
+
+	public HashMap&lt;String, Pelicula&gt; getHashPeliculas() {
+<span class="nc" id="L115">		return hashPeliculas;</span>
+	}
+
+
+	public void setHashPeliculas(HashMap&lt;String, Pelicula&gt; hashPeliculas) {
+<span class="nc" id="L120">		this.hashPeliculas = hashPeliculas;</span>
+<span class="nc" id="L121">	}</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

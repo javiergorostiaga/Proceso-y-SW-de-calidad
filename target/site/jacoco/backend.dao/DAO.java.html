@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Proceso-y-SW-de-calidad</a> &gt; <a href="index.source.html" class="el_package">backend.dao</a> &gt; <span class="el_source">DAO.java</span></div><h1>DAO.java</h1><pre class="source lang-java linenums">package backend.dao;
+
+import backend.objects.Genero;
+import backend.objects.Pelicula;
+
+
+import backend.objects.personas.Persona;
+import backend.objects.personas.Usuario;
+import org.json.simple.JSONObject;
+
+import javax.jdo.*;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+
+public class DAO implements IDao
+{
+    private PersistenceManagerFactory persistentManagerFactory;
+    private PersistenceManager persistentManager;
+    private Transaction transaction;
+
+    public DAO()
+<span class="nc" id="L25">    {</span>
+        try
+        {
+<span class="nc" id="L28">            this.persistentManagerFactory = JDOHelper.getPersistenceManagerFactory(&quot;datanucleus.properties&quot;);</span>
+            //Insert data in the DB
+<span class="nc" id="L30">            this.persistentManager = this.persistentManagerFactory.getPersistenceManager();</span>
+<span class="nc" id="L31">            this.transaction = this.persistentManager.currentTransaction();</span>
+        }
+<span class="nc" id="L33">        catch (Exception ex)</span>
+        {
+<span class="nc" id="L35">            System.err.println(&quot;* Exception: &quot; + ex.getMessage());</span>
+<span class="nc" id="L36">        }</span>
+<span class="nc" id="L37">    }</span>
+
+    @Override
+    public void insertPelicula(HashMap&lt;String, String&gt; hashPelicula) {
+        try
+        {
+<span class="nc" id="L43">            this.transaction.begin();</span>
+            //cuando mandemos un arraylist de varias peliculas haremos for
+            //for(int i=0;i&lt;hashPelicula.size();i++)
+            //{
+<span class="nc" id="L47">                this.persistentManager.makePersistent(</span>
+                        new Pelicula(
+<span class="nc" id="L49">                                hashPelicula.get(&quot;imdbID&quot;),</span>
+<span class="nc" id="L50">                                hashPelicula.get(&quot;Title&quot;),</span>
+<span class="nc" id="L51">                                hashPelicula.get(&quot;Plot&quot;),</span>
+<span class="nc" id="L52">                                hashPelicula.get(&quot;BoxOffice&quot;),</span>
+<span class="nc" id="L53">                                hashPelicula.get(&quot;Actors&quot;), //*</span>
+<span class="nc" id="L54">                                hashPelicula.get(&quot;imdbRating&quot;),</span>
+<span class="nc" id="L55">                                hashPelicula.get(&quot;imdbVotes&quot;),</span>
+<span class="nc" id="L56">                                hashPelicula.get(&quot;Runtime&quot;),</span>
+<span class="nc" id="L57">                                hashPelicula.get(&quot;Type&quot;),</span>
+<span class="nc" id="L58">                                hashPelicula.get(&quot;Awards&quot;),</span>
+<span class="nc" id="L59">                                hashPelicula.get(&quot;Language&quot;), //*</span>
+<span class="nc" id="L60">                                Integer.parseInt(hashPelicula.get(&quot;Year&quot;)),</span>
+<span class="nc" id="L61">                                hashPelicula.get(&quot;Released&quot;),</span>
+<span class="nc" id="L62">                                hashPelicula.get(&quot;Poster&quot;),</span>
+<span class="nc" id="L63">                                hashPelicula.get(&quot;Genre&quot;), //*</span>
+<span class="nc" id="L64">                                hashPelicula.get(&quot;Writer&quot;), //* si hay varios se meten como string separados por coma</span>
+<span class="nc" id="L65">                                hashPelicula.get(&quot;Director&quot;)</span>
+                        ));
+            //}
+<span class="nc" id="L68">            this.transaction.commit();</span>
+        }
+<span class="nc" id="L70">        catch(Exception ex)</span>
+        {
+<span class="nc" id="L72">            System.err.println(&quot;* Exception inserting data into db: &quot; + ex.getMessage());</span>
+        }
+
+        finally
+        {
+<span class="nc bnc" id="L77" title="All 2 branches missed.">            if (this.transaction.isActive())</span>
+            {
+<span class="nc" id="L79">                this.transaction.rollback();</span>
+            }
+
+<span class="nc" id="L82">            this.persistentManager.close();</span>
+        }
+<span class="nc" id="L84">    }</span>
+
+    @Override
+    public void insertUsuario(Usuario usuario ) {
+        try
+        {
+<span class="nc" id="L90">            this.transaction.begin();</span>
+
+<span class="nc" id="L92">            this.persistentManager.makePersistent(</span>
+                    new Usuario(
+
+<span class="nc" id="L95">                            usuario.getNombreUsuario(),</span>
+<span class="nc" id="L96">                            usuario.getNombreReal(),</span>
+<span class="nc" id="L97">                            usuario.getPassword()</span>
+
+
+                    ));
+            //}
+<span class="nc" id="L102">            this.transaction.commit();</span>
+        }
+<span class="nc" id="L104">        catch(Exception ex)</span>
+        {
+<span class="nc" id="L106">            System.err.println(&quot;* Exception inserting data into db: &quot; + ex.getMessage());</span>
+        }
+
+        finally
+        {
+<span class="nc bnc" id="L111" title="All 2 branches missed.">            if (this.transaction.isActive())</span>
+            {
+<span class="nc" id="L113">                this.transaction.rollback();</span>
+            }
+
+<span class="nc" id="L116">            this.persistentManager.close();</span>
+        }
+<span class="nc" id="L118">    }</span>
+
+    @Override
+    public void insertGeneros(ArrayList&lt;HashMap&lt;String, Object&gt;&gt; genero) {
+
+<span class="nc" id="L123">    }</span>
+
+    @Override
+    public HashMap&lt;String, Pelicula&gt; selectPeliculas() {
+<span class="nc" id="L127">        HashMap&lt;String, Pelicula&gt; peliculas = new HashMap&lt;String, Pelicula&gt;();</span>
+        try
+        {
+<span class="nc" id="L130">            System.out.println(&quot;Llega a DAO (Películas)&quot;);</span>
+<span class="nc" id="L131">            this.transaction.begin();</span>
+
+<span class="nc" id="L133">            Query&lt;Pelicula&gt; peliculaQuery = this.persistentManager.newQuery(&quot;SELECT FROM &quot; +Pelicula.class.getName());</span>
+<span class="nc bnc" id="L134" title="All 2 branches missed.">            for (Pelicula pelicula : peliculaQuery.executeList())</span>
+            {
+<span class="nc" id="L136">                peliculas.put(pelicula.getImdbID(), pelicula);</span>
+<span class="nc" id="L137">            }</span>
+<span class="nc" id="L138">            this.transaction.commit();</span>
+        }
+<span class="nc" id="L140">        catch(Exception ex)</span>
+        {
+<span class="nc" id="L142">            System.err.println(&quot;* Exception selecting data from db: &quot; + ex.getMessage());</span>
+        }
+
+        finally
+        {
+<span class="nc bnc" id="L147" title="All 2 branches missed.">            if (this.transaction.isActive())</span>
+            {
+<span class="nc" id="L149">                this.transaction.rollback();</span>
+            }
+
+<span class="nc" id="L152">            this.persistentManager.close();</span>
+        }
+       // System.out.println(&quot;Array DAO ------)&quot;+ ((ArrayList&lt;Pelicula&gt;)peliculas).get(0).getActors());
+<span class="nc" id="L155">        return peliculas; //ahora solo devolvera una pelicula</span>
+    }
+
+    @Override
+    public HashMap&lt;String, Persona&gt; selectUsuarios() {
+<span class="nc" id="L160">        HashMap&lt;String, Persona&gt; usuarios = new HashMap&lt;String, Persona&gt;();</span>
+
+        try {
+<span class="nc" id="L163">            System.out.println(&quot;Llega a DAO (Usuarios)&quot;);</span>
+<span class="nc" id="L164">            this.transaction.begin();</span>
+
+<span class="nc" id="L166">            Query&lt;Persona&gt; usuarioQuery = this.persistentManager.newQuery(&quot;SELECT FROM &quot; +Persona.class.getName());</span>
+<span class="nc bnc" id="L167" title="All 2 branches missed.">            for(Persona usuario : usuarioQuery.executeList()) {</span>
+<span class="nc" id="L168">                usuarios.put(usuario.getNombreUsuario(), usuario);</span>
+<span class="nc" id="L169">            }</span>
+<span class="nc" id="L170">            this.transaction.commit();</span>
+
+<span class="nc" id="L172">        } catch (Exception ex){</span>
+<span class="nc" id="L173">            System.err.println(&quot;* Exception selecting data from db: &quot; + ex.getMessage());</span>
+        }
+
+        finally {
+<span class="nc bnc" id="L177" title="All 2 branches missed.">            if (this.transaction.isActive())</span>
+            {
+<span class="nc" id="L179">                this.transaction.rollback();</span>
+            }
+
+<span class="nc" id="L182">            this.persistentManager.close();</span>
+        }
+
+<span class="nc" id="L185">        return usuarios;</span>
+    }
+
+    @Override
+    public ArrayList&lt;Genero&gt; selectGeneros() {
+<span class="nc" id="L190">        return null;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

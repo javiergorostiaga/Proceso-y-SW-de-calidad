@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Gateway.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Proceso-y-SW-de-calidad</a> &gt; <a href="index.source.html" class="el_package">backend.gateway</a> &gt; <span class="el_source">Gateway.java</span></div><h1>Gateway.java</h1><pre class="source lang-java linenums">package backend.gateway;
+import backend.gateway.IGateway;
+
+import java.util.*;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import com.fasterxml.jackson.databind.JsonSerializable;
+import com.google.common.base.Splitter;
+import org.json.simple.JSONArray;
+import org.json.*;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+public class Gateway implements IGateway {
+
+    private Client client;
+    private WebTarget webTarget;
+    private String url;
+
+    public Gateway()
+<span class="nc" id="L30">    {</span>
+<span class="nc" id="L31">        client = ClientBuilder.newClient();</span>
+<span class="nc" id="L32">    }</span>
+
+    public void accessPoint()
+    {
+<span class="nc" id="L36">        webTarget = client.target(url);</span>
+<span class="nc" id="L37">    }</span>
+
+    public String makeGetRequest() throws Exception
+    {
+
+<span class="nc" id="L42">        WebTarget getRequestController = this.webTarget.path(&quot;&quot;);</span>
+
+<span class="nc" id="L44">        Invocation.Builder invocationBuilder = getRequestController.request(MediaType.APPLICATION_JSON);</span>
+<span class="nc" id="L45">        Response response = invocationBuilder.get();</span>
+<span class="nc" id="L46">        System.out.println(response);</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if (response.getStatus() == Status.OK.getStatusCode())</span>
+        {
+            //ArrayList&lt;HashMap&lt;String, Object&gt;&gt; datos = new ArrayList&lt;&gt;(); // ya no se usa
+<span class="nc" id="L50">            JSONObject obj = response.readEntity(JSONObject.class); //devuelve objeto json, el anyo pasado nos devolvia array json</span>
+<span class="nc" id="L51">            String stringobj = obj.toString(); //convertimos el JSONOBject a String</span>
+<span class="nc" id="L52">            System.out.println(&quot;STRINGOBJ&quot;+stringobj);</span>
+<span class="nc" id="L53">            return stringobj; // esto habra que cambiar</span>
+        }
+        else
+        {
+<span class="nc" id="L57">            throw new Exception(&quot;BadAss error&quot;);</span>
+        }
+    }
+
+    public String obtenerimdbID(String stringobj) //esto quizas no iria en esta clase
+    {
+<span class="nc" id="L63">        String[] separado = stringobj.split(&quot;imdbID&quot;); // solo queremos el id en la primera consulta</span>
+
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        for(int i=0;i&lt;separado.length;i++) {</span>
+            //System.out.println(&quot;Separado (&quot; +i +&quot;): &quot;+ separado[i]+&quot;\n\n\n&quot;);
+<span class="nc" id="L67">            System.out.println(&quot;Separado (&quot; +i +&quot;) Substring: &quot;+ separado[i].substring(3)+&quot;\n\n\n&quot;);</span>
+<span class="nc" id="L68">            separado[i] = separado[i].substring(3);</span>
+        }
+        //aqui tenemos todos los strings empezando por el id
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        for(int i=0;i&lt;separado.length;i++) {</span>
+<span class="nc" id="L72">            String[] obtId = separado[i].split(&quot;\&quot;&quot;);</span>
+<span class="nc" id="L73">            separado[i] = obtId[0];</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">            if(i==1)</span>
+            {
+<span class="nc" id="L76">                break;</span>
+            }
+            //System.out.println(separado[i]+&quot;\n&quot;);
+        }
+<span class="nc" id="L80">        System.out.println(&quot;Separado (0)&quot; + separado[1]);</span>
+<span class="nc" id="L81">        return separado[1];// el 0 no contiene el id todavia al ser la primera division por imdbid</span>
+    }
+
+    public HashMap&lt;String, String&gt; obtenerDatosPelicula(String stringobj) //esto quizas no iria en esta clase
+    {
+<span class="nc" id="L86">        String[] splitPrimero = stringobj.split(&quot;,\&quot;Ratings&quot;);</span>
+
+<span class="nc" id="L88">        System.out.println(&quot;\n\nPRIMERA PARTE\n\n&quot;);</span>
+        //System.out.println(Splitter.on(&quot;\&quot;,\&quot;&quot;).omitEmptyStrings().withKeyValueSeparator(&quot;\&quot;:\&quot;&quot;).split(splitPrimero[0].substring(0, splitPrimero[0].length() - 1).substring(2)));
+<span class="nc" id="L90">        Map&lt;String, String&gt; mapa1 = Splitter.on(&quot;\&quot;,\&quot;&quot;).omitEmptyStrings().withKeyValueSeparator(&quot;\&quot;:\&quot;&quot;).split(splitPrimero[0].substring(0, splitPrimero[0].length() - 1).substring(2));</span>
+
+<span class="nc" id="L92">        System.out.println(&quot;\n\nSEGUNDA PARTE\n\n&quot;);</span>
+<span class="nc" id="L93">        System.out.println(Splitter.on(&quot;\&quot;,\&quot;&quot;).omitEmptyStrings().withKeyValueSeparator(&quot;\&quot;:\&quot;&quot;).split(splitPrimero[1].substring(0, splitPrimero[1].length()-2).substring(splitPrimero[1].indexOf(&quot;Runtime&quot;))));</span>
+<span class="nc" id="L94">        Map&lt;String, String&gt; mapa2 = Splitter.on(&quot;\&quot;,\&quot;&quot;).omitEmptyStrings().withKeyValueSeparator(&quot;\&quot;:\&quot;&quot;).split(splitPrimero[1].substring(0, splitPrimero[1].length() - 2).substring(splitPrimero[1].indexOf(&quot;Runtime&quot;)));</span>
+<span class="nc" id="L95">        HashMap&lt;String,String&gt; hashPelicula=new HashMap&lt;String,String&gt;();</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">        for(Map.Entry&lt;String,String&gt; entrada: mapa2.entrySet())</span>
+        {
+<span class="nc" id="L98">            String clave=entrada.getKey();</span>
+<span class="nc" id="L99">            String valor =entrada.getValue();</span>
+<span class="nc" id="L100">            hashPelicula.put(clave,valor);</span>
+<span class="nc" id="L101">        }</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        for(Map.Entry&lt;String,String&gt; entrada: mapa1.entrySet())</span>
+        {
+<span class="nc" id="L104">            String clave=entrada.getKey();</span>
+<span class="nc" id="L105">            String valor =entrada.getValue();</span>
+<span class="nc" id="L106">            hashPelicula.put(clave,valor);</span>
+<span class="nc" id="L107">        }</span>
+<span class="nc" id="L108">        System.out.println(&quot;PASA&quot;);</span>
+<span class="nc" id="L109">        System.out.println(&quot;HashMap&quot;+hashPelicula);</span>
+        // aqui en vez de devolver hashMap con claves y valor se podria devolver
+        // simplemente un objeto pelicula, una vez que asignemos todos los atributos
+<span class="nc" id="L112">        return hashPelicula;</span>
+    }
+
+    @Override
+    public HashMap&lt;String, String&gt; exportPeliculaGenerico(String pelicula) throws Exception { //sera simplemente hashmap porque se devolvera solo 1 pelicula
+<span class="nc" id="L117">        String url=&quot;https://www.omdbapi.com/?s=&quot;+pelicula+&quot;&amp;apikey=3ae17be9&quot;;</span>
+<span class="nc" id="L118">        this.url=url;</span>
+<span class="nc" id="L119">        accessPoint();</span>
+<span class="nc" id="L120">        String imdbID=&quot;&quot;;</span>
+<span class="nc" id="L121">        imdbID=obtenerimdbID(makeGetRequest());</span>
+<span class="nc" id="L122">        System.out.println(&quot;imdbID-------)&quot;+imdbID);</span>
+<span class="nc" id="L123">        HashMap&lt;String,String&gt;hashPelicula=new HashMap&lt;String,String&gt;();</span>
+        try
+        {
+<span class="nc" id="L126">            hashPelicula=exportPeliculaEspecifico(imdbID); //solo cogemos una pelicula de todas las peliculas del mismo nombre</span>
+        }
+<span class="nc" id="L128">        catch(Exception e)</span>
+        {
+<span class="nc" id="L130">            System.out.println(&quot;Error al obtener información específica de película&quot; +imdbID);</span>
+<span class="nc" id="L131">        }</span>
+
+<span class="nc" id="L133">        return hashPelicula;</span>
+    }
+
+    @Override
+    public HashMap&lt;String, String&gt; exportPeliculaEspecifico(String imdbID) throws Exception {
+<span class="nc" id="L138">        String url=&quot;https://www.omdbapi.com/?i=&quot;+imdbID+&quot;&amp;apikey=3ae17be9&quot;;</span>
+<span class="nc" id="L139">        this.url=url;</span>
+<span class="nc" id="L140">        accessPoint();</span>
+<span class="nc" id="L141">        String respuesta =&quot;&quot;;</span>
+<span class="nc" id="L142">        respuesta=makeGetRequest();</span>
+<span class="nc" id="L143">        HashMap&lt;String,String&gt;hashPelicula=new HashMap&lt;String,String&gt;();</span>
+<span class="nc" id="L144">        return obtenerDatosPelicula(respuesta);</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

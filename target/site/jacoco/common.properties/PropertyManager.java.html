@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PropertyManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Proceso-y-SW-de-calidad</a> &gt; <a href="index.source.html" class="el_package">common.properties</a> &gt; <span class="el_source">PropertyManager.java</span></div><h1>PropertyManager.java</h1><pre class="source lang-java linenums">package common.properties;
+
+import lombok.Getter;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Properties;
+
+public class PropertyManager
+{
+    private String fileName;
+    private FileReader reader;
+    private FileWriter writer;
+<span class="nc" id="L15">    @Getter private Properties properties;</span>
+
+    public PropertyManager(String fileName)
+<span class="nc" id="L18">    {</span>
+<span class="nc" id="L19">        this.fileName = fileName;</span>
+        try
+        {
+<span class="nc" id="L22">            reader = new FileReader(fileName);</span>
+<span class="nc" id="L23">            properties = new Properties();</span>
+<span class="nc" id="L24">            properties.load(reader);</span>
+
+<span class="nc" id="L26">        } catch (IOException ex) {</span>
+<span class="nc" id="L27">            System.err.println(&quot;* Exception selecting properties: &quot; + ex.getMessage());</span>
+<span class="nc" id="L28">        }</span>
+<span class="nc" id="L29">    }</span>
+
+    public void setProperty(String key, String value)
+    {
+        try
+        {
+<span class="nc" id="L35">            reader.close();</span>
+<span class="nc" id="L36">            writer = new FileWriter(fileName);</span>
+
+<span class="nc" id="L38">            properties.setProperty(key, value);</span>
+<span class="nc" id="L39">            properties.store(writer, null);</span>
+
+<span class="nc" id="L41">            writer.close();</span>
+
+<span class="nc" id="L43">            reader = new FileReader(fileName);</span>
+<span class="nc" id="L44">            properties = new Properties();</span>
+<span class="nc" id="L45">            properties.load(reader);</span>
+<span class="nc" id="L46">        } catch (IOException ex) {</span>
+<span class="nc" id="L47">            System.err.println(&quot;* Exception updating properties: &quot; + ex.getMessage());</span>
+<span class="nc" id="L48">        }</span>
+<span class="nc" id="L49">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
